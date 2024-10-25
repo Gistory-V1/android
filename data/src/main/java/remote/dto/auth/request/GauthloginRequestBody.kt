@@ -1,4 +1,4 @@
-package remote.dto.auth
+package remote.dto.auth.request
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
