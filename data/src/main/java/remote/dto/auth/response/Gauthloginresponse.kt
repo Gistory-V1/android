@@ -1,5 +1,7 @@
 package remote.dto.auth.response
 
+
+import Model.auth.response.GauthloginresponseModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -12,5 +14,13 @@ data class Gauthloginresponse (
     @Json(name="refreshTokenExpiresIn") val refreshTokenExpiresIn: String,
 
 
+
+)
+
+fun Gauthloginresponse.toLoginModel()=GauthloginresponseModel(
+    accessToken = accessToken,
+    refreshToken=refreshToken,
+    accessTokenExpiresIn=accessTokenExpiresIn,
+    refreshTokenExpiresIn=refreshTokenExpiresIn
 
 )
