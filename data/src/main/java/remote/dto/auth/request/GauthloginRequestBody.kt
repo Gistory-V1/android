@@ -11,4 +11,3 @@ import com.squareup.moshi.JsonClass
 
  )
 
-fun GauthloginRequestBodyModel.toDto()= GauthloginRequestBody(code= code)

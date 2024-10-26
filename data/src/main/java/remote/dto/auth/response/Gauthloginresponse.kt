@@ -17,10 +17,3 @@ data class Gauthloginresponse (
 
 )
 
-fun Gauthloginresponse.toLoginModel()=GauthloginresponseModel(
-    accessToken = accessToken,
-    refreshToken=refreshToken,
-    accessTokenExpiresIn=accessTokenExpiresIn,
-    refreshTokenExpiresIn=refreshTokenExpiresIn
-
-)
