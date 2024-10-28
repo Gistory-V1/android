@@ -1,6 +1,5 @@
 package Model.auth.response
 
-
 data class GauthloginresponseModel (
      val accessToken: String,
      val refreshToken: String,

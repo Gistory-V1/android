@@ -1,7 +1,5 @@
 package utill
 
-
-
 import android.util.Log
 import expection.BadRequestException
 import expection.ConflictException

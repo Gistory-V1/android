@@ -19,5 +19,4 @@ class Authrepoistoryimpl @Inject constructor(
     override suspend fun GAuthLogin(body: GauthloginRequestBodyModel): Flow<GauthloginresponseModel> {
         TODO("Not yet implemented")
     }
-
 }
