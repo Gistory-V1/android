@@ -3,20 +3,25 @@ package repoistory
 import Model.auth.request.GauthloginRequestBodyModel
 import Model.auth.response.GauthloginresponseModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import remote.datasource.Gauthdatasource
+import remote.dto.auth.request.toDto
+import remote.dto.auth.response.toLogin
 import reopoistory.Authrepoistory
 import javax.inject.Inject
 
 class Authrepoistoryimpl @Inject constructor(
+    private val gauthdatasource: Gauthdatasource
 ) : Authrepoistory {
     override fun GauthLogout(): Flow<Unit> {
-        TODO("Not yet implemented")
+       return gauthdatasource.gauthLogout()
     }
 
-    override  fun GAuthAccess(refreshToken: String): Flow<GauthloginresponseModel> {
-        TODO("Not yet implemented")
+    override suspend fun GAuthAccess(refreshToken: String): Flow<GauthloginresponseModel> {
+      return gauthdatasource.gauthaccess(refreshToken = refreshToken).map { it.toLogin()  }
     }
 
     override  fun GAuthLogin(body: GauthloginRequestBodyModel): Flow<GauthloginresponseModel> {
-        TODO("Not yet implemented")
+        return gauthdatasource.gauthliogin(body = body.toDto()).map { it.toLogin() }
     }
 }

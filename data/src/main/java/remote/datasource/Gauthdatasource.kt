@@ -9,5 +9,5 @@ interface Gauthdatasource {
 
     fun gauthLogout(): Flow<Unit>
 
-    fun gauthaccess(refreshToken: String): Flow<Gauthloginresponse>
+    suspend fun gauthaccess(refreshToken: String): Flow<Gauthloginresponse>
 }
