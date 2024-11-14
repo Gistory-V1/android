@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class LocalDataSourceimpl @Inject constructor(
+class LocalDataSourceImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ): LocalDataSource {
 
@@ -66,12 +66,12 @@ class LocalDataSourceimpl @Inject constructor(
 
     override suspend fun deleteRefreshToken() {
         dataStore.edit {
-            it.remove(ACCESS_TOKEN)
+            it.remove(REFRESH_TOKEN)
         }
     }
 
     override fun getRefreshTime(): Flow<String> = dataStore.data.map{
-        it[ACCESS_TIME]?: ""
+        it[REFRESH_TIME]?: ""
 
     }
 
@@ -86,7 +86,4 @@ class LocalDataSourceimpl @Inject constructor(
             it.remove(REFRESH_TIME)
         }
     }
-
-
-
 }

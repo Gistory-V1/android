@@ -5,13 +5,13 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import reopoistory.Authrepoistory
-import repoistory.Authrepoistoryimpl
+import repoistory.AuthrepoistoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
     @Binds
     abstract fun providerAuthRepository(
-        authrepoistoryimpl: Authrepoistoryimpl
+        authrepoistoryimpl: AuthrepoistoryImpl
     ):Authrepoistory
 }

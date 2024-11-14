@@ -10,5 +10,5 @@ class TokenRefreshUsecase @Inject constructor(
 ) {
 
    operator suspend fun invoke(refreshToken: String): Flow<GauthloginresponseModel> =
-       authrepoistory.GAuthAccess(refreshToken=refreshToken)
+       authrepoistory.GAuthAccess()
 }

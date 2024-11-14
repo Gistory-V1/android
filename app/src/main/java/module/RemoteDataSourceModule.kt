@@ -1,6 +1,6 @@
 package com.kim.Dormitorymanager.module
 
-import com.kim.Dormitorymanager.datasource.Gauthdatasourceimpl
+import com.kim.Dormitorymanager.datasource.GauthdatasourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,6 +12,6 @@ abstract class RemoteDataSourceModule {
     @Binds
     abstract fun providAuthDatasource(
 
-        gauthdatasourceimpl: Gauthdatasourceimpl
-    ): Gauthdatasourceimpl
+        gauthdatasourceimpl: GauthdatasourceImpl
+    ): GauthdatasourceImpl
 }

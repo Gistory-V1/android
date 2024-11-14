@@ -19,6 +19,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    @Provides
+    @Singleton
     fun provideOkhttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         authInterceptor: Authinterceptor
@@ -60,6 +62,4 @@ object NetworkModule {
             .addConverterFactory(moshiConverterFactory)
             .build()
     }
-
-
 }

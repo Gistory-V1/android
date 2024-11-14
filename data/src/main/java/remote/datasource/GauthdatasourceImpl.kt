@@ -7,7 +7,7 @@ import remote.dto.auth.response.Gauthloginresponse
 import utill.performApiRequest
 import javax.inject.Inject
 
-class Gauthdatasourceimpl @Inject constructor(
+class GauthdatasourceImpl @Inject constructor(
     private val authService: AuthApi
 ): Gauthdatasource {
     override  fun gauthLogout(): Flow<Unit> =
@@ -16,6 +16,6 @@ class Gauthdatasourceimpl @Inject constructor(
     override  fun gauthliogin(body: GauthloginRequestBody): Flow<Gauthloginresponse> =
         performApiRequest { authService.gauthilogin(body=body) }
 
-    override suspend fun gauthaccess(refreshToken: String): Flow<Gauthloginresponse> =
+    override suspend fun gauthaccess(): Flow<Gauthloginresponse> =
         performApiRequest { authService.gauthAccess() }
 }
