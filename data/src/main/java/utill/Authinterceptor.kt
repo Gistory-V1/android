@@ -1,14 +1,10 @@
 package utill
 
-import com.squareup.moshi.Moshi
-import expection.NeedLoginException
+
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import local.datasource.LocalDataSource
 import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
 import okhttp3.Response
 import javax.inject.Inject
 
@@ -43,9 +39,6 @@ class Authinterceptor @Inject constructor(
             else -> {
                 request.newBuilder().addHeader("Authorization","Bearer $accessToken" ).build()
             }
-
-
-
         }
         val response = chain.proceed(newRequest)
 
@@ -53,12 +46,7 @@ class Authinterceptor @Inject constructor(
             201, 204-> response.newBuilder().code(200).build()
             else -> response
         }
-
-
-
     }
-
-
 }
 
 
