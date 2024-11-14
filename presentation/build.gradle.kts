@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id(Dependency.Gradle.KOTLIN)
     id(Dependency.Gradle.LIBRARY)
@@ -19,6 +22,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String","CLIENT_ID", getApiKey("CLIENT_ID"))
+
+        buildConfigField("String", "REDIRECT_URI", getApiKey("REDIRECT_URI"))
     }
 
     buildTypes {
@@ -89,4 +95,11 @@ dependencies {
 
     implementation(Dependency.Compose.COMPOSE_IMMUTABLELIST)
 
+}
+
+fun getApiKey(propertyKey: String): String {
+    val propFile = rootProject.file("./local.properties")
+    val properties = Properties()
+    properties.load(FileInputStream(propFile))
+    return properties.getProperty(propertyKey)
 }
