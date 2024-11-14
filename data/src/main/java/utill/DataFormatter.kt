@@ -5,7 +5,7 @@ import java.util.Locale
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-private val dataFormat = SimpleDateFormat("yyyy-MM-DD'T'HH:mm:ss", Locale.getDefault())
+private val dataFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
 
 fun String.toDate() = runCatching {
     dataFormat.parse(this)
