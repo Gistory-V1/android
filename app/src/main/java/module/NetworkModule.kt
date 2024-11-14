@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import utill.Authinterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -20,7 +21,7 @@ import javax.inject.Singleton
 object NetworkModule {
     fun provideOkhttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        authInterceptor: AuthInterceptor,
+        authInterceptor: Authinterceptor
     ): OkHttpClient {
         return OkHttpClient
             .Builder()
@@ -54,7 +55,7 @@ object NetworkModule {
         moshiConverterFactory: MoshiConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.)
+            .baseUrl("exple Base url")
             .client(okHttpClient)
             .addConverterFactory(moshiConverterFactory)
             .build()
