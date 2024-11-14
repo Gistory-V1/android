@@ -8,7 +8,7 @@ interface Authrepoistory {
 
      fun GAuthLogin(body: GauthloginRequestBodyModel): Flow<GauthloginresponseModel>
 
-     suspend fun GAuthAccess(refreshToken: String): Flow<GauthloginresponseModel>
+     suspend fun GAuthAccess(): Flow<GauthloginresponseModel>
 
      fun GauthLogout(): Flow<Unit>
 
