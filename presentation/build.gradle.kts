@@ -22,9 +22,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String","CLIENT_ID", getApiKey("CLIENT_ID"))
 
-        buildConfigField("String", "REDIRECT_URI", getApiKey("REDIRECT_URI"))
     }
 
     buildTypes {
@@ -97,9 +95,3 @@ dependencies {
 
 }
 
-fun getApiKey(propertyKey: String): String {
-    val propFile = rootProject.file("./local.properties")
-    val properties = Properties()
-    properties.load(FileInputStream(propFile))
-    return properties.getProperty(propertyKey)
-}

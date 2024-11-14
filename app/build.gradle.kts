@@ -23,12 +23,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField(
-            type = "String",
-            name = "BASE_URL",
-            getApiKey("BASE_URL")
 
-        )
     }
 
     buildTypes {
@@ -102,9 +97,3 @@ dependencies {
     ksp(Dependency.Moshi.MOSHI_CODEGEN)
 }
 
-fun getApiKey(propertyKey: String): String {
-    val propFile = rootProject.file("./local.properties")
-    val properties = Properties()
-    properties.load(FileInputStream(propFile))
-    return properties.getProperty(propertyKey)
-}
