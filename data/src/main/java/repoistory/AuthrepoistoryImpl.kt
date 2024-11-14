@@ -10,15 +10,15 @@ import remote.dto.auth.response.toLogin
 import reopoistory.Authrepoistory
 import javax.inject.Inject
 
-class Authrepoistoryimpl @Inject constructor(
+class AuthrepoistoryImpl @Inject constructor(
     private val gauthdatasource: Gauthdatasource
 ) : Authrepoistory {
     override fun GauthLogout(): Flow<Unit> {
        return gauthdatasource.gauthLogout()
     }
 
-    override suspend fun GAuthAccess(refreshToken: String): Flow<GauthloginresponseModel> {
-      return gauthdatasource.gauthaccess(refreshToken = refreshToken).map { it.toLogin()  }
+    override suspend fun GAuthAccess(): Flow<GauthloginresponseModel> {
+      return gauthdatasource.gauthaccess().map { it.toLogin()  }
     }
 
     override  fun GAuthLogin(body: GauthloginRequestBodyModel): Flow<GauthloginresponseModel> {
