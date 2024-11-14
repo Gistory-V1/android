@@ -17,5 +17,5 @@ class Gauthdatasourceimpl @Inject constructor(
         performApiRequest { authService.gauthilogin(body=body) }
 
     override suspend fun gauthaccess(refreshToken: String): Flow<Gauthloginresponse> =
-        performApiRequest { authService.gauthAccess(refreshToken=refreshToken) }
+        performApiRequest { authService.gauthAccess() }
 }
