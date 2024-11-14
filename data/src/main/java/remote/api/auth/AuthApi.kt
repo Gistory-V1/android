@@ -10,10 +10,10 @@ interface AuthApi {
     suspend fun gauthilogin(
         @Body body: GauthloginRequestBody
     ): Gauthloginresponse
+
     @PATCH("/auth")
     suspend fun gauthAccess(): Gauthloginresponse
+
     @DELETE("/auth")
     fun gauthLogout()
-
-
 }
