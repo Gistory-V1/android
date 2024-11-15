@@ -10,7 +10,7 @@ interface Authrepoistory {
 
      suspend fun GAuthAccess(): Flow<GauthloginresponseModel>
 
-     fun GauthLogout(): Flow<Unit>
+     suspend fun GauthLogout(): Flow<Unit>
 
 
 }
