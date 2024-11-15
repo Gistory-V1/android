@@ -15,5 +15,5 @@ interface AuthApi {
     suspend fun gauthAccess(): Gauthloginresponse
 
     @DELETE("/auth")
-    fun gauthLogout()
+    suspend fun gauthLogout()
 }
