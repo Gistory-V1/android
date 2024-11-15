@@ -7,7 +7,7 @@ import remote.dto.auth.response.Gauthloginresponse
 interface Gauthdatasource {
     fun gauthliogin(body: GauthloginRequestBody) : Flow<Gauthloginresponse>
 
-    fun gauthLogout(): Flow<Unit>
+    suspend fun gauthLogout(): Flow<Unit>
 
     suspend fun gauthaccess(): Flow<Gauthloginresponse>
 }
