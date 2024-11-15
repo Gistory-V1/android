@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GauthdatasourceImpl @Inject constructor(
     private val authService: AuthApi
 ): Gauthdatasource {
-    override  fun gauthLogout(): Flow<Unit> =
+    override suspend fun gauthLogout(): Flow<Unit> =
         performApiRequest { authService.gauthLogout() }
 
     override  fun gauthliogin(body: GauthloginRequestBody): Flow<Gauthloginresponse> =
