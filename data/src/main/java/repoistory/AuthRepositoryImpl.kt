@@ -14,7 +14,6 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val gAuthDatasource: GAuthDataSource,
     private val localDataSource: LocalDataSource
-
 ) : AuthRepository {
     override fun gAuthLogout(): Flow<Unit> {
        return gAuthDatasource.gAuthLogout()
