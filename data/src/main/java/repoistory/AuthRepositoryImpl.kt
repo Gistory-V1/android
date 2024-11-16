@@ -11,17 +11,17 @@ import reopoistory.AuthRepository
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
-    private val gauthdatasource: GAuthDataSource
+    private val gauthDatasource: GAuthDataSource
 ) : AuthRepository {
-    override  fun GauthLogout(): Flow<Unit> {
-       return gauthdatasource.gAuthLogout()
+    override fun gAuthLogout(): Flow<Unit> {
+       return gauthDatasource.gAuthLogout()
     }
 
-    override suspend fun GAuthAccess(): Flow<GAuthLoginResponseModel> {
-      return gauthdatasource.gAuthAccess().map { it.toLogin()  }
+    override suspend fun gAuthAccess(): Flow<GAuthLoginResponseModel> {
+      return gauthDatasource.gAuthAccess().map { it.toLogin()  }
     }
 
-    override  fun GAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel> {
-        return gauthdatasource.gAuthLogin(body = body.toDto()).map { it.toLogin() }
+    override  fun gAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel> {
+        return gauthDatasource.gAuthLogin(body = body.toDto()).map { it.toLogin() }
     }
 }
