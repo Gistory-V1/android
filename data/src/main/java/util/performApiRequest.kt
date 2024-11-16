@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flowOn
 internal inline fun <reified T> performApiRequest(crossinline apiCall: suspend () -> T):
         Flow<T> = flow {
     emit(
-        DMAPIHandIer<T>()
+        DMAPIHandier<T>()
             .httpRequest{ apiCall() }
             .sendRequest()
     )
