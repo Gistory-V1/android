@@ -18,7 +18,7 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-class DmAPIHandIer<T> {
+class DMAPIHandier<T> {
     private lateinit var httpRequest: suspend () -> T
     fun httpRequest(httpRequest: suspend () -> T) =
         this.apply { this.httpRequest = httpRequest }

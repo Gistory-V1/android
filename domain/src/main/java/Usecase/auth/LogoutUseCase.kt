@@ -7,7 +7,7 @@ class LogoutUseCase @Inject constructor(
     private val authrepoistory: AuthRepository
 ) {
     operator fun  invoke()=runCatching{
-        authrepoistory.GauthLogout()
+        authrepoistory.gAuthLogout()
 
     }
 }
