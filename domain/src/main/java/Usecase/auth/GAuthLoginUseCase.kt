@@ -1,13 +1,13 @@
 package Usecase.auth
 
-import Model.auth.request.GauthloginRequestBodyModel
-import reopoistory.Authrepoistory
+import Model.auth.request.GAuthLoginRequestBodyModel
+import reopoistory.AuthRepository
 import javax.inject.Inject
 
 class GAuthLoginUseCase @Inject constructor(
-    private val authrepoistory: Authrepoistory
+    private val authrepoistory: AuthRepository
 ) {
-     operator fun invoke(body: GauthloginRequestBodyModel) = runCatching {
+     operator fun invoke(body: GAuthLoginRequestBodyModel) = runCatching {
         authrepoistory.GAuthLogin(body = body)
 
     }
