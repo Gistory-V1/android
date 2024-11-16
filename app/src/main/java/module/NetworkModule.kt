@@ -1,6 +1,5 @@
 package com.kim.Dormitorymanager.module
 
-import com.kim.Dormitorymanager.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -11,7 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import utill.Authinterceptor
+import util.AuthInterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -23,7 +22,7 @@ object NetworkModule {
     @Singleton
     fun provideOkhttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        authInterceptor: Authinterceptor
+        authInterceptor: AuthInterceptor
     ): OkHttpClient {
         return OkHttpClient
             .Builder()
