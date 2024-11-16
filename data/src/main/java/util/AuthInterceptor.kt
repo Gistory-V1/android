@@ -1,4 +1,4 @@
-package utill
+package util
 
 
 import kotlinx.coroutines.flow.first
@@ -8,7 +8,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-class Authinterceptor @Inject constructor(
+class AuthInterceptor @Inject constructor(
     private val dataSource: LocalDataSource
 ) : Interceptor {
     private val ignore by lazy {"/auth"}
@@ -26,7 +26,7 @@ class Authinterceptor @Inject constructor(
         val method = request.method
 
         val accessToken = runBlocking { dataSource.getAccessToken().first().replace("\"","") }
-        val refreshTokon = runBlocking { dataSource.getRefreshToken().first().replace("\"","") }
+        val refreshToken = runBlocking { dataSource.getRefreshToken().first().replace("\"","") }
 
         val newRequest = when{
             ignore.any { path.contains(it) && method in listOf(POST, GET, DELETE)} -> {
@@ -34,7 +34,7 @@ class Authinterceptor @Inject constructor(
             }
 
             path.endsWith("/auth") && method in listOf(PATCH)-> {
-                request.newBuilder().addHeader("Authorization", "Bearer $refreshTokon").build()
+                request.newBuilder().addHeader("Authorization", "Bearer $refreshToken").build()
             }
             else -> {
                 request.newBuilder().addHeader("Authorization","Bearer $accessToken" ).build()
