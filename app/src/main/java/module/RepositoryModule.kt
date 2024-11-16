@@ -4,14 +4,14 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import reopoistory.Authrepoistory
-import repoistory.AuthrepoistoryImpl
+import reopoistory.AuthRepository
+import repoistory.AuthRepositoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
     @Binds
     abstract fun providerAuthRepository(
-        authrepoistoryimpl: AuthrepoistoryImpl
-    ):Authrepoistory
+        authrepoistoryimpl: AuthRepositoryImpl
+    ):AuthRepository
 }
