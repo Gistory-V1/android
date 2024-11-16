@@ -13,7 +13,7 @@ import javax.inject.Inject
 class AuthrepoistoryImpl @Inject constructor(
     private val gauthdatasource: Gauthdatasource
 ) : Authrepoistory {
-    override suspend fun GauthLogout(): Flow<Unit> {
+    override  fun GauthLogout(): Flow<Unit> {
        return gauthdatasource.gauthLogout()
     }
 
