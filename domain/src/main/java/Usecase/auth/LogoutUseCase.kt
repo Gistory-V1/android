@@ -1,10 +1,10 @@
 package Usecase.auth
 
-import reopoistory.Authrepoistory
+import reopoistory.AuthRepository
 import javax.inject.Inject
 
 class LogoutUseCase @Inject constructor(
-    private val authrepoistory: Authrepoistory
+    private val authrepoistory: AuthRepository
 ) {
     operator fun  invoke()=runCatching{
         authrepoistory.GauthLogout()
