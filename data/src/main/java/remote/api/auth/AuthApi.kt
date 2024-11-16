@@ -1,19 +1,19 @@
 package remote.api.auth;
 
 
-import remote.dto.auth.request.GauthloginRequestBody
-import remote.dto.auth.response.Gauthloginresponse
+import remote.dto.auth.request.GAuthLoginRequestBody
+import remote.dto.auth.response.GAuthLoginResponse
 import retrofit2.http.*;
 
 interface AuthApi {
     @POST("/auth")
-    suspend fun gauthilogin(
-        @Body body: GauthloginRequestBody
-    ): Gauthloginresponse
+    suspend fun gAuthiLogin(
+        @Body body: GAuthLoginRequestBody
+    ): GAuthLoginResponse
 
     @PATCH("/auth")
-    suspend fun gauthAccess(): Gauthloginresponse
+    suspend fun gAuthAccess(): GAuthLoginResponse
 
     @DELETE("/auth")
-    suspend fun gauthLogout()
+    suspend fun gAuthLogout()
 }
