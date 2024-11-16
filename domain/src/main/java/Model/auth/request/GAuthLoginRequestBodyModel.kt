@@ -1,5 +1,5 @@
 package Model.auth.request
 
-data class GauthloginRequestBodyModel(
+data class GAuthLoginRequestBodyModel(
     val code: String
 )
