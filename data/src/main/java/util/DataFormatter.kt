@@ -1,4 +1,4 @@
-package utill
+package util
 
 import expection.NeedLoginException
 import java.util.Locale
