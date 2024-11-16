@@ -1,4 +1,4 @@
-package utill
+package util
 
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -36,7 +36,7 @@ class TokenAuthenticator @Inject constructor(
                 .build()
 
             val authApi = retrofit.create(AuthApi::class.java)
-            val response = runBlocking { authApi.gauthAccess() }
+            val response = runBlocking { authApi.gAuthAccess() }
             runBlocking {
                 with(localDataSource){
                     setAccessToken(response.accessToken)
