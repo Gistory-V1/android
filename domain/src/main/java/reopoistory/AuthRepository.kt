@@ -1,4 +1,4 @@
-package reopoistory
+package repository
 
 import model.auth.request.GAuthLoginRequestBodyModel
 import model.auth.response.GAuthLoginResponseModel

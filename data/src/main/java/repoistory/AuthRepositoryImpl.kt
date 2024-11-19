@@ -8,23 +8,23 @@ import local.datasource.LocalDataSource
 import remote.datasource.GAuthDataSource
 import remote.dto.auth.request.toDto
 import remote.dto.auth.response.toLogin
-import reopoistory.AuthRepository
+import repository.AuthRepository
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
-    private val gAuthDatasource: GAuthDataSource,
+    private val gAuthDataSource: GAuthDataSource,
     private val localDataSource: LocalDataSource
 ) : AuthRepository {
     override fun gAuthLogout(): Flow<Unit> {
-       return gAuthDatasource.gAuthLogout()
+       return gAuthDataSource.gAuthLogout()
     }
 
     override suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponseModel> {
-      return gAuthDatasource.gAuthAccess().map { it.toLogin()  }
+      return gAuthDataSource.gAuthAccess().map { it.toLogin()  }
     }
 
     override  fun gAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel> {
-        return gAuthDatasource.gAuthLogin(body = body.toDto()).map { it.toLogin() }
+        return gAuthDataSource.gAuthLogin(body = body.toDto()).map { it.toLogin() }
     }
 
     override fun getRefreshToken(): Flow<String> {
