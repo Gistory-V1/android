@@ -1,6 +1,6 @@
-package Model.auth.response
+package model.auth.response
 
-data class GauthloginresponseModel (
+data class GAuthLoginResponseModel (
      val accessToken: String,
      val refreshToken: String,
      val accessTokenExpiresIn: String,

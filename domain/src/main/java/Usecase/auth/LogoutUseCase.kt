@@ -1,13 +1,13 @@
-package Usecase.auth
+package usecase.auth
 
-import reopoistory.Authrepoistory
+import repository.AuthRepository
 import javax.inject.Inject
 
 class LogoutUseCase @Inject constructor(
-    private val authrepoistory: Authrepoistory
+    private val authrepoistory: AuthRepository
 ) {
-    operator fun  invoke()=runCatching{
-        authrepoistory.GauthLogout()
+    operator fun invoke()=runCatching{
+        authrepoistory.gAuthLogout()
 
     }
 }

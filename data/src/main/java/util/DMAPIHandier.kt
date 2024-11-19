@@ -1,4 +1,4 @@
-package utill
+package util
 
 import android.util.Log
 import expection.BadRequestException
@@ -18,7 +18,7 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-class DMAPIhandIer<T> {
+class DMAPIHandier<T> {
     private lateinit var httpRequest: suspend () -> T
     fun httpRequest(httpRequest: suspend () -> T) =
         this.apply { this.httpRequest = httpRequest }

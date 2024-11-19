@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id(Dependency.Gradle.KOTLIN)
     id(Dependency.Gradle.LIBRARY)
@@ -19,6 +22,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
     }
 
     buildTypes {
@@ -90,3 +94,4 @@ dependencies {
     implementation(Dependency.Compose.COMPOSE_IMMUTABLELIST)
 
 }
+

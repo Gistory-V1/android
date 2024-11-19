@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id(Dependency.Gradle.APPLICATION)
     id(Dependency.Gradle.KOTLIN)
@@ -92,3 +95,4 @@ dependencies {
     implementation(Dependency.Moshi.MOSHI_CONVERTER)
     ksp(Dependency.Moshi.MOSHI_CODEGEN)
 }
+
