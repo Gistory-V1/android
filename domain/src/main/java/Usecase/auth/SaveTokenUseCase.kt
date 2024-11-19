@@ -1,7 +1,7 @@
 package usecase.auth
 
 import model.auth.response.GAuthLoginResponseModel
-import reopoistory.AuthRepository
+import repository.AuthRepository
 import javax.inject.Inject
 
 class SaveTokenUseCase @Inject constructor(

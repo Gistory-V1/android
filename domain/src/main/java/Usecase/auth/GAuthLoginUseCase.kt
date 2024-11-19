@@ -1,7 +1,7 @@
 package usecase.auth
 
 import model.auth.request.GAuthLoginRequestBodyModel
-import reopoistory.AuthRepository
+import repository.AuthRepository
 import javax.inject.Inject
 
 class GAuthLoginUseCase @Inject constructor(

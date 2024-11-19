@@ -1,6 +1,6 @@
 package usecase.auth
 
-import reopoistory.AuthRepository
+import repository.AuthRepository
 import javax.inject.Inject
 
 class LogoutUseCase @Inject constructor(
