@@ -1,4 +1,4 @@
-package Model.auth.response
+package model.auth.response
 
 data class GAuthLoginResponseModel (
      val accessToken: String,

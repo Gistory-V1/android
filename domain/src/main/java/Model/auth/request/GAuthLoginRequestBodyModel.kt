@@ -1,4 +1,4 @@
-package Model.auth.request
+package model.auth.request
 
 data class GAuthLoginRequestBodyModel(
     val code: String

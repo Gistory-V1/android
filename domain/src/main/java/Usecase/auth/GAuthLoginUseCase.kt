@@ -1,6 +1,6 @@
-package Usecase.auth
+package usecase.auth
 
-import Model.auth.request.GAuthLoginRequestBodyModel
+import model.auth.request.GAuthLoginRequestBodyModel
 import reopoistory.AuthRepository
 import javax.inject.Inject
 

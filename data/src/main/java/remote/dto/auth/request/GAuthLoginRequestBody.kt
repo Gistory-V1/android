@@ -1,6 +1,6 @@
 package remote.dto.auth.request
 
-import Model.auth.request.GAuthLoginRequestBodyModel
+import model.auth.request.GAuthLoginRequestBodyModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

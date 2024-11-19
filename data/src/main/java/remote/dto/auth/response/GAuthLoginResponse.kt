@@ -1,6 +1,6 @@
 package remote.dto.auth.response
 
-import Model.auth.response.GAuthLoginResponseModel
+import model.auth.response.GAuthLoginResponseModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

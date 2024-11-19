@@ -1,4 +1,4 @@
-package Usecase.auth
+package usecase.auth
 
 import reopoistory.AuthRepository
 import javax.inject.Inject

@@ -1,13 +1,13 @@
 package reopoistory
 
-import Model.auth.request.GAuthLoginRequestBodyModel
-import Model.auth.response.GAuthLoginResponseModel
+import model.auth.request.GAuthLoginRequestBodyModel
+import model.auth.response.GAuthLoginResponseModel
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
      fun gAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel>
 
-     suspend fun gAuthAccess(): Flow<GAuthLoginResponseModel>
+     suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponseModel>
 
      fun gAuthLogout(): Flow<Unit>
 
