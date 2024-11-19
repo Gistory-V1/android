@@ -1,7 +1,7 @@
 package repoistory
 
-import Model.auth.request.GAuthLoginRequestBodyModel
-import Model.auth.response.GAuthLoginResponseModel
+import model.auth.request.GAuthLoginRequestBodyModel
+import model.auth.response.GAuthLoginResponseModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import local.datasource.LocalDataSource
@@ -19,7 +19,7 @@ class AuthRepositoryImpl @Inject constructor(
        return gAuthDatasource.gAuthLogout()
     }
 
-    override suspend fun gAuthAccess(): Flow<GAuthLoginResponseModel> {
+    override suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponseModel> {
       return gAuthDatasource.gAuthAccess().map { it.toLogin()  }
     }
 
