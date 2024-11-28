@@ -4,122 +4,122 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kim.presentation.R
+
 @Composable
-fun Myclean(
+fun MyClean(
     modifier: Modifier = Modifier,
+    toDayClean: String,
+    penaltyPoint: Int,
+    cleanPoint: Int,
 ) {
     Row(
-        Modifier
-            .width(320.dp)
-            .height(74.dp)
+        modifier = modifier
+            .fillMaxWidth()
             .background(color = Color(0xFF252525), shape = RoundedCornerShape(size = 10.dp))
-            .padding(start = 20.dp, top = 16.dp, end = 20.dp, bottom = 16.dp),  // 외부 패딩 추가
-        horizontalArrangement = Arrangement.SpaceBetween,  // 요소 간 간격 조절
-        verticalAlignment = Alignment.CenterVertically      // 수직 정렬 중앙 배치
+            .padding(start = 10.dp, top = 16.dp, end = 20.dp, bottom = 16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        // 첫 번째 정보 (오늘의 청소 구역)
+        // 오늘의 청소 구역
         Column(
-            Modifier
-                .width(95.dp)
-
-                .height(41.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 text = "오늘의 청소 구역",
                 style = TextStyle(
                     fontSize = 13.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight.W500,
+                    color = Color.White,
                 )
             )
             Text(
-                text = "3층 화장실",
+                text = toDayClean,
                 style = TextStyle(
                     fontSize = 13.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight.W500,
+                    color = Color.White,
                 )
             )
         }
 
-        // 두 번째 정보 (벌점)
+        // 벌점
         Column(
-            Modifier
-                .width(28.dp)
-                .height(42.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 text = "벌점",
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight.W500,
+                    color = Color.White,
                     textAlign = TextAlign.Center,
                 )
             )
             Text(
-                text = "14점",
+                text = penaltyPoint.toString(),
                 style = TextStyle(
                     fontSize = 16.sp,
-                    fontWeight = FontWeight(600),
-                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight.W600,
+                    color = Color.White,
                     textAlign = TextAlign.Center
                 )
             )
         }
 
-        // 세 번째 정보 (남은 청소)
+        // 남은 청소
         Column(
-            Modifier
-                .width(69.dp)
-                .height(42.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 text = "남은 청소",
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight.W500,
+                    color = Color.White,
                     textAlign = TextAlign.Center,
                 )
             )
             Text(
-                text = "2회",
+                text = stringResource(
+                    R.string.CleanResource,
+                    cleanPoint
+                ),
                 style = TextStyle(
                     fontSize = 15.sp,
-                    fontWeight = FontWeight(600),
-                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight.W600,
+                    color = Color.White,
                     textAlign = TextAlign.Center,
                 )
             )
         }
     }
 }
+
 @Composable
 @Preview
-fun PreviewMyvlean(){
-    Myclean()
+fun PreviewMyClean() {
+    MyClean(
+        penaltyPoint = 1,
+        toDayClean = "3층 화장실",
+        cleanPoint = 4
+    )
 }
