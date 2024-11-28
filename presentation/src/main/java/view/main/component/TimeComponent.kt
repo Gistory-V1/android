@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -27,11 +28,9 @@ fun TimeComponent(
     modifier: Modifier = Modifier
 ) {
     Row(
-        Modifier
-            .width(360.dp)
-            .height(60.dp)
-            .padding(start = 10.dp, end = 10.dp)
-            .fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(start = 10.dp, end = 10.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
