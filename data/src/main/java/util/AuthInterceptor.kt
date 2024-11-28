@@ -24,7 +24,6 @@ class AuthInterceptor @Inject constructor(
         val request = chain.request()
         val path = request.url.encodedPath
         val method = request.method
-
         val accessToken = runBlocking { dataSource.getAccessToken().first().replace("\"","") }
         val refreshToken = runBlocking { dataSource.getRefreshToken().first().replace("\"","") }
 
@@ -32,7 +31,6 @@ class AuthInterceptor @Inject constructor(
             ignore.any { path.contains(it) && method in listOf(POST, GET, DELETE)} -> {
                 request
             }
-
             path.endsWith("/auth") && method in listOf(PATCH)-> {
                 request.newBuilder().addHeader("Authorization", "Bearer $refreshToken").build()
             }
