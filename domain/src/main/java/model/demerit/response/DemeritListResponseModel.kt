@@ -1,6 +1,6 @@
 package model.demerit.response
 
-data class DemeritListResponse (
+data class DemeritListResponseModel (
     val because: String,
     val pointList: Int,
 )
