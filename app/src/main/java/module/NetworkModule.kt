@@ -1,5 +1,6 @@
 package com.kim.Dormitorymanager.module
 
+import android.util.Log
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -8,8 +9,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import remote.api.auth.AuthApi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import util.AuthInterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -18,6 +21,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    @Provides
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor { message -> Log.v("HTTP", message) }
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
+
     @Provides
     @Singleton
     fun provideOkhttpClient(
@@ -60,5 +68,11 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(moshiConverterFactory)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthAPi(retrofit: Retrofit): AuthApi{
+        return retrofit.create(AuthApi::class.java)
     }
 }
