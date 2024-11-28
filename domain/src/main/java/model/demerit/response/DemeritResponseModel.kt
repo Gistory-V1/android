@@ -2,7 +2,7 @@ package model.demerit.response
 
 import java.util.UUID
 
-data class DemeritResponse(
+data class DemeritResponseModel(
     val userId: UUID,
     val toDayClean: String,
     val name: String,
