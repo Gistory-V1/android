@@ -8,6 +8,5 @@ class LogoutUseCase @Inject constructor(
 ) {
     operator fun invoke()=runCatching{
         authrepoistory.gAuthLogout()
-
     }
 }
