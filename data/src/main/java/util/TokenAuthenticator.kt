@@ -17,9 +17,7 @@ class TokenAuthenticator @Inject constructor(
 ) : Authenticator {
     override fun authenticate(route: Route?, response: Response): Request? {
         val refreshToken = runBlocking { localDataSource.getRefreshToken().first().replace("\"","") }
-
         val newAccessToken = refreshAccessToken(refreshToken)
-
         return if (newAccessToken.isNullOrEmpty()){
             null
         }else{
