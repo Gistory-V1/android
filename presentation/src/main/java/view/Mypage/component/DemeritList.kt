@@ -17,13 +17,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kim.presentation.R
-import model.demerit.response.DemeritListResponse
+import model.demerit.response.DemeritListResponseModel
 
 
 @Composable
 fun DemeritList(
     modifier: Modifier=Modifier,
-    data: DemeritListResponse
+    data: DemeritListResponseModel
 ){
     Column (
         modifier = modifier
@@ -78,7 +78,7 @@ fun DemeritList(
 @Preview
 fun PreviewDemeritList(){
     DemeritList(
-        data = DemeritListResponse(
+        data = DemeritListResponseModel(
             because = "노트북",
             pointList = 1,
         )
