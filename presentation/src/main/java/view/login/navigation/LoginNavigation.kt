@@ -1,12 +1,10 @@
 package view.login.navigation
 
 
-
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import view.login.screen.LoginScreen
-
+import view.login.screen.LoginRoute
 
 const val loginRoute = "login_route"
 
@@ -18,8 +16,6 @@ fun NavGraphBuilder.loginScreen(
     navigateToHome: () -> Unit
 ) {
     composable(loginRoute) {
-        LoginScreen(
-            navigateToHome = navigateToHome
-        )
+       LoginRoute(navigateToHome = navigateToHome)
     }
 }
