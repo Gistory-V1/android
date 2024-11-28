@@ -9,6 +9,5 @@ class GAuthLoginUseCase @Inject constructor(
 ) {
      operator fun invoke(body: GAuthLoginRequestBodyModel) = runCatching {
         authRepository.gAuthLogin(body = body)
-
     }
 }
