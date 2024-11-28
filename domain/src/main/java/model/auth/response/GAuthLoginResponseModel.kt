@@ -5,5 +5,4 @@ data class GAuthLoginResponseModel (
      val refreshToken: String,
      val accessTokenExpiresIn: String,
      val refreshTokenExpiresIn: String,
-
     )
