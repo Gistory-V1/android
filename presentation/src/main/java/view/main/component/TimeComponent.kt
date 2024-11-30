@@ -30,7 +30,7 @@ fun TimeComponent(
     Row(
         modifier = modifier
             .fillMaxSize()
-            .padding(start = 10.dp, end = 10.dp),
+            .padding(horizontal = 10.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
