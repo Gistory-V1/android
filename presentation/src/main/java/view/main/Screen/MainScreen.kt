@@ -15,7 +15,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -56,7 +55,7 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp)
-                .padding(start = 10.dp, end = 10.dp),
+                .padding(horizontal = 10.dp),
 
 
             ) {
@@ -72,14 +71,17 @@ fun MainScreen(
             ) {
             MyRankingComponent(
                 data = RankResponseModel(
-                    rank = 3, name = "김재관", penaltyPoint = 5, userId = UUID.randomUUID()
+                    rank = 3,
+                    name = "김재관",
+                    penaltyPoint = 5,
+                    userId = UUID.randomUUID()
                 )
             )
         }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
+                .padding(horizontal = 20.dp,),
             horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.Start),
             verticalAlignment = Alignment.CenterVertically,
 
@@ -142,7 +144,7 @@ fun MainScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 10.dp, end = 10.dp),
+                        .padding(horizontal = 10.dp,),
                     verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
                     horizontalAlignment = Alignment.Start,
 
