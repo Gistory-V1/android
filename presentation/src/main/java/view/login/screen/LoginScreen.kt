@@ -24,8 +24,8 @@ import view.login.component.DoMaGAthButton
 
 @Composable
 internal fun LoginRoute(
-    navigateToHome: () -> Unit
-
+    navigateToHome: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     //구현할 예정입니다.
 }
@@ -45,8 +45,7 @@ fun LoginScreen(
             .background(color = Color(0xFF1E1E1E))
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(32.dp, Alignment.Top),
             horizontalAlignment = Alignment.Start
         ) {
@@ -57,7 +56,8 @@ fun LoginScreen(
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = "안녕하세요!", style = TextStyle(
+                    text = "안녕하세요!",
+                    style = TextStyle(
                         fontSize = 22.sp,
                         fontWeight = FontWeight(700),
                         color = Color(0xFFFFFFFF),
