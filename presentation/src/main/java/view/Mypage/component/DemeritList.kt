@@ -22,26 +22,27 @@ import model.demerit.response.DemeritListResponseModel
 
 @Composable
 fun DemeritList(
-    modifier: Modifier=Modifier,
+    modifier: Modifier = Modifier,
     data: DemeritListResponseModel
 ){
     Column (
         modifier = modifier
             .fillMaxWidth()
             .background(color = Color(0xFF252525), shape = RoundedCornerShape(size = 10.dp))
-            .padding(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 12.dp),
+            .padding(
+                horizontal = 16.dp,
+                vertical = 12.dp
+            ),
         verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
         horizontalAlignment = Alignment.Start,
         ){
         Column(
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.Top),
             horizontalAlignment = Alignment.Start,
             ){
             Column (
-                modifier = Modifier
-                    .fillMaxWidth()
+                modifier = Modifier.fillMaxWidth()
             ){
                 Text(
                     text = "벌점 리스트",
@@ -53,8 +54,7 @@ fun DemeritList(
                 )
             }
             Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(2.dp, Alignment.Top),
                 horizontalAlignment = Alignment.Start,
             ){
@@ -82,9 +82,5 @@ fun PreviewDemeritList(){
             because = "노트북",
             pointList = 1,
         )
-
     )
-
-
-
 }
