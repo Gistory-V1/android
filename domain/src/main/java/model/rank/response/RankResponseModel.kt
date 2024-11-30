@@ -6,5 +6,5 @@ data class RankResponseModel(
     val userId: UUID,
     val rank: Int,
     val name: String,
-    val penaltyPoint: Int
+    val penaltyPoint: Int,
 )
