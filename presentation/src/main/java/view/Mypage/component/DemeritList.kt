@@ -23,7 +23,7 @@ import model.demerit.response.DemeritListResponseModel
 @Composable
 fun DemeritList(
     modifier: Modifier = Modifier,
-    data: DemeritListResponseModel
+    data: DemeritListResponseModel,
 ){
     Column (
         modifier = modifier
