@@ -28,8 +28,6 @@ import view.Mypage.component.MyClean
 @Composable
 fun MyPage(
     modifier: Modifier = Modifier,
-
-
     ) {
     Column(
         modifier = modifier
@@ -38,14 +36,13 @@ fun MyPage(
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(0.dp, Alignment.Top),
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start,
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 235.dp),
-                verticalArrangement = Arrangement.spacedBy(0.dp, Alignment.Top),
                 horizontalAlignment = Alignment.Start,
             ) {
                 Text(
@@ -60,9 +57,11 @@ fun MyPage(
                         addStyle(
                             style = SpanStyle(
                                 color = Color(0xFF9BFFA6), fontSize = 27.sp  // 이산 부분의 글자 크기 설정
-                            ), start = 0, end = 2
+                            ),
+                            start = 0, end = 2
                         )
-                    }.toAnnotatedString(), style = TextStyle(
+                    }.
+                    toAnnotatedString(), style = TextStyle(
                         fontSize = 22.sp,  // 기본 글자 크기
                         fontWeight = FontWeight(900),
                         color = Color(0xFFFFFFFF),
@@ -73,7 +72,10 @@ fun MyPage(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp, top = 16.dp, end = 20.dp, bottom = 16.dp),
+                    .padding(
+                        horizontal = 20.dp,
+                        vertical = 16.dp,
+                        ),
                 verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
                 horizontalAlignment = Alignment.Start,
             ) {
