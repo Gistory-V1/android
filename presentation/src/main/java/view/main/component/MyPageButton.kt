@@ -24,7 +24,7 @@ import com.kim.presentation.R
 @Composable
 fun MyPageButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     Box(
         modifier = modifier
