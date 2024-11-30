@@ -31,7 +31,11 @@ fun DoMaGAthButton(
             .fillMaxWidth()
             .clickablesingle(onClick = onClick)
             .background(color = Color(0xFF494949), shape = RoundedCornerShape(size = 10.dp))
-            .padding(start = 133.dp, top = 13.dp, end = 133.dp, bottom = 13.dp),
+            .padding(
+                horizontal = 16.dp,
+                vertical = 12.dp,
+            ),
+
     ) {
         Text(
             text = "GAuth",
