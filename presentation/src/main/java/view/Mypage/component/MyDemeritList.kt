@@ -24,7 +24,7 @@ import model.demerit.response.MyPenaltyResponseModel
 @Composable
 fun MyDemeritList(
     modifier: Modifier = Modifier,
-    data: MyPenaltyResponseModel
+    data: MyPenaltyResponseModel,
 ) {
     Row(
         modifier = modifier
