@@ -61,7 +61,6 @@ fun MyClean(
 
         // 벌점
         Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
@@ -74,7 +73,7 @@ fun MyClean(
                 )
             )
             Text(
-                text = penaltyPoint.toString(),
+                text = "${penaltyPoint}점",
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.W600,
