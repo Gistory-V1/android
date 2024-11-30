@@ -11,7 +11,6 @@ data class GAuthLoginResponse (
     @Json(name = "accessTokenExpiresIn") val accessTokenExpiresIn: String,
     @Json(name = "refreshTokenExpiresIn") val refreshTokenExpiresIn: String,
 )
-
 fun GAuthLoginResponse.toLogin()= GAuthLoginResponseModel(
     accessToken=accessToken,
     refreshToken=refreshToken,
