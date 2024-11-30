@@ -26,7 +26,7 @@ import java.util.UUID
 @Composable
 fun MyRankingComponent(
     modifier: Modifier = Modifier,
-    data: RankResponseModel
+    data: RankResponseModel,
 ) {
     Column(
         modifier = modifier
