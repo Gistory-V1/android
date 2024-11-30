@@ -10,7 +10,7 @@ data class RankResponse(
     @Json(name = "userId") val userId: UUID,
     @Json(name = "rank") val rank: Int,
     @Json(name = "name") val name: String,
-    @Json(name = "penaltyPoint") val penaltyPoint: Int
+    @Json(name = "penaltyPoint") val penaltyPoint: Int,
 )
 
 fun RankResponse.toRank() = RankResponseModel(
