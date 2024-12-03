@@ -28,6 +28,14 @@ import view.Mypage.component.MyClean
 @Composable
 fun MyPage(
     modifier: Modifier = Modifier,
+    toDayClean: String,
+    myBecause: String,
+    myPointList: Int,
+    penaltyPoint: Int,
+    cleanPoint: Int,
+    because: String,
+    pointList: Int,
+
     ) {
     Column(
         modifier = modifier
@@ -75,15 +83,11 @@ fun MyPage(
                     .padding(
                         horizontal = 20.dp,
                         vertical = 16.dp,
-                        ),
+                    ),
                 verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
                 horizontalAlignment = Alignment.Start,
             ) {
-                MyClean(
-                    penaltyPoint = 1,
-                    toDayClean = "3층 화장실",
-                    cleanPoint = 3
-                )
+                MyClean(toDayClean = toDayClean, penaltyPoint = penaltyPoint , cleanPoint = cleanPoint,)
             }
             Column(
                 modifier = Modifier
@@ -93,10 +97,7 @@ fun MyPage(
                 horizontalAlignment = Alignment.Start,
             ) {
                 MyDemeritList(
-                    data = MyPenaltyResponseModel(
-                        myBecause = "노트북",
-                        myPointList = 1,
-                    )
+                    myBecause = myBecause, myPointList = myPointList
                 )
             }
             Column(
@@ -107,10 +108,7 @@ fun MyPage(
                 horizontalAlignment = Alignment.Start,
             ) {
                 DemeritList(
-                    data = DemeritListResponseModel(
-                        because = "노트북",
-                        pointList = 1,
-                    )
+                    pointList = pointList, because = because
                 )
             }
         }
@@ -120,5 +118,13 @@ fun MyPage(
 @Composable
 @Preview
 fun PreviewMyPage() {
-    MyPage()
+    MyPage(
+        toDayClean = "3층 화장실",
+        myBecause = "노트북",
+        myPointList = 3,
+        penaltyPoint = 1,
+        cleanPoint = 4,
+        because = "노트북",
+        pointList = 1,
+    )
 }
