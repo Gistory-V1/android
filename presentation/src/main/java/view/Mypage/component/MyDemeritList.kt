@@ -24,7 +24,8 @@ import model.demerit.response.MyPenaltyResponseModel
 @Composable
 fun MyDemeritList(
     modifier: Modifier = Modifier,
-    data: MyPenaltyResponseModel,
+    myBecause: String,
+    myPointList: Int
 ) {
     Row(
         modifier = modifier
@@ -58,8 +59,9 @@ fun MyDemeritList(
                 Text(
                     text = stringResource(
                         R.string.DemeritList,
-                        data.myBecause,
-                        data.myPointList
+                        myBecause,
+                        myPointList
+
                     ),
                     style = TextStyle(
                         fontSize = 14.sp,
@@ -77,9 +79,7 @@ fun MyDemeritList(
 @Preview
 fun PreviewMyDemeritList() {
     MyDemeritList(
-        data = MyPenaltyResponseModel(
-            myBecause = "노트북",
-            myPointList = 3,
-        )
+        myBecause = "노트북",
+        myPointList = 3,
     )
 }
