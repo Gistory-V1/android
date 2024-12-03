@@ -23,7 +23,8 @@ import model.demerit.response.DemeritListResponseModel
 @Composable
 fun DemeritList(
     modifier: Modifier = Modifier,
-    data: DemeritListResponseModel,
+    because: String,
+    pointList: Int,
 ){
     Column (
         modifier = modifier
@@ -61,8 +62,8 @@ fun DemeritList(
                 Text(
                     text = stringResource(
                         R.string.stringResource,
-                        data.because,
-                        data.pointList
+                        because,
+                        pointList,
                     ),
                     style = TextStyle(
                         fontSize = 14.sp,
@@ -78,9 +79,7 @@ fun DemeritList(
 @Preview
 fun PreviewDemeritList(){
     DemeritList(
-        data = DemeritListResponseModel(
             because = "노트북",
             pointList = 1,
-        )
     )
 }
