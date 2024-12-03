@@ -31,6 +31,7 @@ import java.util.UUID
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
+    rank: Int,
 ) {
     Column(
         modifier = modifier
@@ -70,12 +71,7 @@ fun MainScreen(
 
             ) {
             MyRankingComponent(
-                data = RankResponseModel(
-                    rank = 3,
-                    name = "김재관",
-                    penaltyPoint = 5,
-                    userId = UUID.randomUUID()
-                )
+                rank = rank,
             )
         }
         Row(
@@ -160,5 +156,7 @@ fun MainScreen(
 @Composable
 @Preview
 fun PreviewMainScreen() {
-    MainScreen()
+    MainScreen(
+        rank = 1,
+    )
 }
