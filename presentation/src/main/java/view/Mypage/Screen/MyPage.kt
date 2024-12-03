@@ -19,22 +19,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import model.demerit.response.DemeritListResponseModel
-import model.demerit.response.MyPenaltyResponseModel
+import model.demerit.response.DemeritResponseModel
 import view.Mypage.component.DemeritList
 import view.Mypage.component.MyDemeritList
 import view.Mypage.component.MyClean
+import java.util.UUID
 
 @Composable
 fun MyPage(
     modifier: Modifier = Modifier,
-    toDayClean: String,
-    myBecause: String,
-    myPointList: Int,
-    penaltyPoint: Int,
-    cleanPoint: Int,
-    because: String,
-    pointList: Int,
+    data: DemeritResponseModel
 
     ) {
     Column(
@@ -61,7 +55,7 @@ fun MyPage(
                     )
                 )
                 Text(
-                    text = AnnotatedString.Builder("이산님!").apply {
+                    text = AnnotatedString.Builder("${data.name}님").apply {
                         addStyle(
                             style = SpanStyle(
                                 color = Color(0xFF9BFFA6), fontSize = 27.sp  // 이산 부분의 글자 크기 설정
@@ -87,7 +81,13 @@ fun MyPage(
                 verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
                 horizontalAlignment = Alignment.Start,
             ) {
-                MyClean(toDayClean = toDayClean, penaltyPoint = penaltyPoint , cleanPoint = cleanPoint,)
+                MyClean(
+                    modifier = modifier,
+                    data.toDayClean,
+                    data.penaltyPoint,
+                    data.cleanPoint,
+                    )
+
             }
             Column(
                 modifier = Modifier
@@ -97,7 +97,9 @@ fun MyPage(
                 horizontalAlignment = Alignment.Start,
             ) {
                 MyDemeritList(
-                    myBecause = myBecause, myPointList = myPointList
+                    modifier = modifier,
+                    data.myBecause,
+                    data.myPointList,
                 )
             }
             Column(
@@ -108,7 +110,9 @@ fun MyPage(
                 horizontalAlignment = Alignment.Start,
             ) {
                 DemeritList(
-                    pointList = pointList, because = because
+                    modifier = modifier,
+                    data.because,
+                    data.pointList,
                 )
             }
         }
@@ -119,12 +123,19 @@ fun MyPage(
 @Preview
 fun PreviewMyPage() {
     MyPage(
-        toDayClean = "3층 화장실",
-        myBecause = "노트북",
-        myPointList = 3,
-        penaltyPoint = 1,
-        cleanPoint = 4,
-        because = "노트북",
-        pointList = 1,
+        data = DemeritResponseModel(
+            because = "노트북",
+            cleanPoint = 3,
+            myBecause = "노트북",
+            myPointList = 3,
+            name = "이산",
+            penaltyPoint = 1,
+            pointList = 1,
+            penaltyList = 2,
+            toDayClean = "3층 화장실",
+            userId = UUID.randomUUID(),
+
+
+        )
     )
 }
