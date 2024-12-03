@@ -17,45 +17,39 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kim.presentation.component.modifier.clickablesingle
+
 @Stable
 @Composable
- fun DomaGathbutton (
-     modifier: Modifier=Modifier,
-     onClick: () -> Unit
-
- ){
+fun DoMaGAthButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .width(320.dp)
-            .clickablesingle(onClick=onClick)
-            .height(52.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .clickablesingle(onClick = onClick)
             .background(color = Color(0xFF494949), shape = RoundedCornerShape(size = 10.dp))
-            .padding(start = 133.dp, top = 13.dp, end = 133.dp, bottom = 13.dp),
+            .padding(
+                horizontal = 16.dp,
+                vertical = 12.dp,
+            ),
 
-
-
-
-
-    ){ Text(
-
-                text = "Ganth",
-                style = TextStyle(
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight(700),
-                    color = Color(0xFFE0E0E0),
-
-                    )
+    ) {
+        Text(
+            text = "GAuth",
+            style = TextStyle(
+                fontSize = 20.sp,
+                fontWeight = FontWeight(700),
+                color = Color(0xFFE0E0E0),
             )
-
-
+        )
     }
-
-
 }
+
 @Preview
 @Composable
-fun DomaGauthbuttonPrevies(){
-    DomaGathbutton {}
+fun DoMaGAuthButtonPreview() {
+    DoMaGAthButton {}
 }

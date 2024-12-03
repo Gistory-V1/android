@@ -12,6 +12,6 @@ import repoistory.AuthRepositoryImpl
 abstract class RepositoryModule {
     @Binds
     abstract fun providerAuthRepository(
-        authrepoistoryimpl: AuthRepositoryImpl
+        authRepositoryImpl: AuthRepositoryImpl
     ):AuthRepository
 }

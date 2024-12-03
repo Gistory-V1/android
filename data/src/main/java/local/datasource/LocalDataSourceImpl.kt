@@ -36,7 +36,6 @@ class LocalDataSourceImpl @Inject constructor(
 
     override fun getAccessTime(): Flow<String> = dataStore.data.map {
         it[ACCESS_TIME] ?: ""
-
     }
 
     override suspend fun setAccessTime(accessTime: String) {
@@ -54,8 +53,6 @@ class LocalDataSourceImpl @Inject constructor(
 
     override fun getRefreshToken(): Flow<String> = dataStore.data.map{
         it[REFRESH_TOKEN]?: ""
-
-
     }
 
     override suspend fun setRefreshToken(refreshToken: String) {
@@ -72,7 +69,6 @@ class LocalDataSourceImpl @Inject constructor(
 
     override fun getRefreshTime(): Flow<String> = dataStore.data.map{
         it[REFRESH_TIME]?: ""
-
     }
 
     override suspend fun setRefreshTime(refreshTime: String) {

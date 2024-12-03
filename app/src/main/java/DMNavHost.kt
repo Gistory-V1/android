@@ -2,36 +2,29 @@ package com.kim.Dormitorymanager
 
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.remember
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import view.Mypage.navigation.MyScreen
-import view.Mypage.navigation.navgationTomypage
-import view.login.navigation.loginScreen
-import view.login.screen.LoginScreen
+import view.Mypage.navigation.navGationToMyPage
+import view.login.navigation.LoginScreen
+import view.login.navigation.navigateToLogin
+
 
 @Composable
 fun DMNavHost(
     navController: NavHostController = rememberNavController(),
     startDestination: String
 ){
-    val viewModelStoreOwner= checkNotNull(LocalViewModelStoreOwner.current)
 
     NavHost(navController = navController,
         startDestination =startDestination ){
-        loginScreen (
-            navigateToHome = {navController}
-        )
-
-        MyScreen(
-            navgationTomypage = navController::popBackStack
-
-        )
+        LoginScreen(navigateToHome = navController::navigateToLogin)
 
 
-
+        MyScreen(navGationToMyPage = navController::popBackStack)
     }
-
-
 }

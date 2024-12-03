@@ -14,7 +14,7 @@ class GAuthDataSourceImpl @Inject constructor(
         performApiRequest { authService.gAuthLogout() }
 
     override fun gAuthLogin(body: GAuthLoginRequestBody): Flow<GAuthLoginResponse> =
-        performApiRequest { authService.gAuthLogin(body=body) }
+        performApiRequest { authService.gAuthLogin(body = body) }
 
     override suspend fun gAuthAccess(): Flow<GAuthLoginResponse> =
         performApiRequest { authService.gAuthAccess() }
