@@ -26,7 +26,7 @@ import java.util.UUID
 @Composable
 fun MyRankingComponent(
     modifier: Modifier = Modifier,
-    data: RankResponseModel,
+    rank: Int
 ) {
     Column(
         modifier = modifier
@@ -55,7 +55,7 @@ fun MyRankingComponent(
             Text(
                 text = stringResource(
                     R.string.Rank,
-                    data.rank
+                    rank
             ),
                 style = TextStyle(
                     fontSize = 20.sp,
@@ -71,12 +71,7 @@ fun MyRankingComponent(
 @Preview
 fun PreviewMyRankingComponent() {
     MyRankingComponent(
-        data = RankResponseModel(
-            rank = 3,
-            name = "김재관",
-            penaltyPoint = 5,
-            userId = UUID.randomUUID()
-        )
+        rank = 3
 
     )
 }
