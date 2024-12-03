@@ -11,4 +11,7 @@ data class DemeritResponseModel(
     val because: String,
     val pointList: Int,
     val penaltyList: Int,
+    val myBecause: String,
+    val myPointList: Int,
+
 )
