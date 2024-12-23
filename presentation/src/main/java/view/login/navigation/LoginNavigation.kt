@@ -3,19 +3,24 @@ package view.login.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import view.login.screen.LoginRoute
+import view.login.screen.SiginUpRoute
 
-const val loginRoute = "login_route"
+const val siginUpRoute = "sign_up_route"
 
-fun NavController.navigateToLogin() {
-    this.navigate(loginRoute)
+fun NavController.navigateToSignUp(navOptions: NavOptions? = null) {
+    this.navigate(siginUpRoute, navOptions)
 }
 
-fun NavGraphBuilder.LoginScreen(
-    navigateToHome: () -> Unit
+fun NavGraphBuilder.signUp(
+    onBackClick: () -> Unit,
+    onNumberClick: () -> Unit,
 ) {
-    composable(loginRoute) {
-       LoginRoute(navigateToHome = navigateToHome)
+    composable(route = siginUpRoute)  {
+        SiginUpRoute(
+            onBackClick = onBackClick,
+            onNumberClick = onNumberClick,
+        )
     }
 }

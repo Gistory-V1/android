@@ -20,7 +20,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Dormitorymanager"
+rootProject.name = "Gstory1"
 include(":app")
 include(":data")
 include(":domain")

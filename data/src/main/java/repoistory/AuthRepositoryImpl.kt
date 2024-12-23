@@ -16,11 +16,11 @@ class AuthRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : AuthRepository {
     override fun gAuthLogout(): Flow<Unit> {
-       return gAuthDataSource.gAuthLogout()
+        return gAuthDataSource.gAuthLogout()
     }
 
     override suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponseModel> {
-      return gAuthDataSource.gAuthAccess().map { it.toLogin()  }
+        return gAuthDataSource.gAuthAccess().map { it.toLogin()  }
     }
 
     override  fun gAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel> {
@@ -28,7 +28,7 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun getRefreshToken(): Flow<String> {
-      return localDataSource.getRefreshToken()
+        return localDataSource.getRefreshToken()
     }
 
     override suspend fun saveToken(data: GAuthLoginResponseModel) {
