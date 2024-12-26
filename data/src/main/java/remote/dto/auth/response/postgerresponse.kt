@@ -2,6 +2,7 @@ package remote.dto.auth.response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import model.auth.response.PostresponseModel
 
 @JsonClass(generateAdapter = true)
 data class PostResponse(
@@ -12,4 +13,14 @@ data class PostResponse(
     @Json(name = "author") val author: String,
     @Json(name = "views") val views: Long,
     @Json(name = "createdAt") val createdAt: String
+)
+fun PostResponse.toModel() = PostresponseModel(
+    postId = postId,
+    title = title,
+    content = content,
+    likeCount = likeCount,
+    author = author,
+    views = views,
+    createdAt = createdAt
+
 )
