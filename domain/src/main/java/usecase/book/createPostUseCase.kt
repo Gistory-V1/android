@@ -8,8 +8,8 @@ import javax.inject.Inject
 class createPostUseCase @Inject constructor(
     private val writeRepository: WriteRepository,
 ){
-    suspend operator fun invoke(body: witecreaterequestModel) = runCatching {
-        writeRepository.createPost(body = body)
+    operator suspend fun invoke(sessionId: String,body: witecreaterequestModel) = runCatching {
+        writeRepository.createPost(sessionId =sessionId, body=body)
     }
 
 }

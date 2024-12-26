@@ -6,14 +6,21 @@ import remote.dto.auth.response.GAuthLoginResponse
 import retrofit2.http.*;
 
 interface AuthApi {
-    @POST("/auth")
+    @POST("/signup")
+    suspend fun gAuthsingup(
+        @Body body: GAuthLoginRequestBody
+    )
+
+    @POST("/login")
     suspend fun gAuthLogin(
         @Body body: GAuthLoginRequestBody
     ): GAuthLoginResponse
 
     @PATCH("/auth")
-    suspend fun gAuthAccess(): GAuthLoginResponse
+    suspend fun gAuthAccess(
+        @Header("refreshToken") refreshToken: String
+    ): GAuthLoginResponse
 
-    @DELETE("/auth")
+    @DELETE("/logout")
     suspend fun gAuthLogout()
 }

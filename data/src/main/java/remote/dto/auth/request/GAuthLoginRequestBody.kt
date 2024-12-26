@@ -6,7 +6,11 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
  data class GAuthLoginRequestBody(
-    @Json(name = "code") val code: String,
+     val email: String,
+     val password: String,
  )
 
-fun GAuthLoginRequestBodyModel.toDto() = GAuthLoginRequestBody(code = code)
+fun GAuthLoginRequestBodyModel.toDto() = GAuthLoginRequestBody(
+    email = email,
+    password = password,
+)

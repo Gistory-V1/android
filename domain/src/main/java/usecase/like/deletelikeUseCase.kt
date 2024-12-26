@@ -5,13 +5,12 @@ import model.auth.request.likebodyModel
 import reopoistory.LikeRepository
 import javax.inject.Inject
 
-class createlikeUseCase @Inject constructor(
+class deletelikeUseCase @Inject constructor(
     private val likeRepository: LikeRepository
-){
-    suspend operator fun invoke(body: likebodyModel,sessionId: String): Flow<Unit> =
-        likeRepository.createlike(
+) {
+    suspend operator fun invoke(body: likebodyModel, sessionId: String): Flow<Unit> =
+        likeRepository.deletelike(
             sessionId = sessionId,
             body = body
         )
-
 }

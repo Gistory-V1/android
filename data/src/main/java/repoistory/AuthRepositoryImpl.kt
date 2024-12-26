@@ -17,10 +17,19 @@ class AuthRepositoryImpl @Inject constructor(
 ) : AuthRepository {
     override fun gAuthLogout(): Flow<Unit> {
         return gAuthDataSource.gAuthLogout()
+
+    }
+
+    override fun gAuthSignUp(body: GAuthLoginRequestBodyModel): Flow<Unit> {
+        return gAuthDataSource.gAuthSignUp(
+            body=body.toDto()
+        )
     }
 
     override suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponseModel> {
-        return gAuthDataSource.gAuthAccess().map { it.toLogin()  }
+        return gAuthDataSource.gAuthAccess(
+            refreshToken = refreshToken
+        ).map { it.toLogin()  }
     }
 
     override  fun gAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel> {

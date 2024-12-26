@@ -5,6 +5,9 @@ import model.auth.response.GAuthLoginResponseModel
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
+
+     fun gAuthSignUp(body: GAuthLoginRequestBodyModel): Flow<Unit>
+
      fun gAuthLogin(body: GAuthLoginRequestBodyModel): Flow<GAuthLoginResponseModel>
 
      suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponseModel>

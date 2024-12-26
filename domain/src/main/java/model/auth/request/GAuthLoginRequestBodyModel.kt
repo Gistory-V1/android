@@ -1,5 +1,8 @@
 package model.auth.request
 
+import android.provider.ContactsContract.CommonDataKinds.Email
+
 data class GAuthLoginRequestBodyModel(
-    val code: String,
+    val email:  String,
+    val password: String,
 )

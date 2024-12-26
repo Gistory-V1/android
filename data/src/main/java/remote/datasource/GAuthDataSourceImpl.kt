@@ -10,12 +10,17 @@ import javax.inject.Inject
 class GAuthDataSourceImpl @Inject constructor(
     private val authService: AuthApi
 ): GAuthDataSource {
+    override fun gAuthSignUp(body: GAuthLoginRequestBody): Flow<Unit> =
+        performApiRequest { authService.gAuthsingup(body= body) }
+
     override fun gAuthLogout(): Flow<Unit> =
         performApiRequest { authService.gAuthLogout() }
 
     override fun gAuthLogin(body: GAuthLoginRequestBody): Flow<GAuthLoginResponse> =
         performApiRequest { authService.gAuthLogin(body = body) }
 
-    override suspend fun gAuthAccess(): Flow<GAuthLoginResponse> =
-        performApiRequest { authService.gAuthAccess() }
+    override suspend fun gAuthAccess(refreshToken: String): Flow<GAuthLoginResponse> =
+        performApiRequest { authService.gAuthAccess(
+            refreshToken = refreshToken
+        ) }
 }
