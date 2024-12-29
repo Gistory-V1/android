@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -30,23 +28,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.navigation.NavigationBar
 import com.kim.presentation.R
-import view.main.component.MainItem
-import view.otherblog.componet.otherBlogItem
+import model.auth.response.prfilereponseModel
 
 @Composable
-fun MyBlogs(
+fun name (
     modifier: Modifier = Modifier,
-    onCick: () -> Unit
-) {
-    val dummyList = List(10) { index -> "내가 피부가 까만 이유는?" }
-
+    data: prfilereponseModel
+){
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .background(color = Color(0xFFFFFFFF))
     ) {
@@ -90,7 +83,7 @@ fun MyBlogs(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "모태환\n님의 블로그",
+                text = "${data.name}\n님의 블로그",
                 style = TextStyle(
                     fontSize = 28.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -102,7 +95,7 @@ fun MyBlogs(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "구독자 20",
+                text = "구독자 ${data.likesCount}$",
                 style = TextStyle(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
@@ -113,7 +106,7 @@ fun MyBlogs(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "모태환 님의 블로그 입니다.",
+                text = "${data.name} 님의 블로그 입니다.",
                 style = TextStyle(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
@@ -129,7 +122,10 @@ fun MyBlogs(
                     modifier = Modifier
                         .width(90.dp)
                         .height(40.dp)
-                        .background(color = Color(0xFFEEEEEE), shape = RoundedCornerShape(20.dp))
+                        .background(
+                            color = Color(0xFFEEEEEE),
+                            shape = RoundedCornerShape(20.dp)
+                        )
                         .clickable { /* TODO */ },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
@@ -148,7 +144,10 @@ fun MyBlogs(
                     modifier = Modifier
                         .width(90.dp)
                         .height(40.dp)
-                        .background(color = Color(0xFFEEEEEE), shape = RoundedCornerShape(20.dp))
+                        .background(
+                            color = Color(0xFFEEEEEE),
+                            shape = RoundedCornerShape(20.dp)
+                        )
                         .clickable { /* TODO */ },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
@@ -164,7 +163,8 @@ fun MyBlogs(
                 }
             }
             Text(
-                text = "MY BLOG",
+                text = "MY BLOG" +
+                        "${data.postsCount}" + "${data.likesCount}",
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
@@ -172,42 +172,6 @@ fun MyBlogs(
                 ),
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp)
             )
-
-
-
         }
-
-
-        // "MY BLOG" 헤더
-        // 게시물 리스트
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            itemsIndexed(dummyList) { index, item ->
-                MainItem(
-                    index = index + 1,
-                    title = item,
-                    likes = 100,
-                    views = 36,
-                    daysAgo = "2일 전"
-                )
-            }
-        }
-
-        // 하단 네비게이션 바
-        NavigationBar(
-            onClick = onCick
-        )
     }
-}
-
-@Preview
-@Composable
-fun MyblogPreview() {
-    MyBlogs(
-        onCick = {}
-    )
 }

@@ -8,9 +8,8 @@ import javax.inject.Inject
 class deltelikeUseCase @Inject constructor(
     private val subRepository: subRepository
 ){
-    suspend operator fun invoke(body: subrequestModel, name: String): Flow<Unit> =
+    suspend operator fun invoke(body: subrequestModel): Flow<Unit> =
         subRepository.deletelike(
-            name = name,
             body = body
         )
 }

@@ -1,7 +1,7 @@
 package remote.dto.auth.request
 
 import com.squareup.moshi.Json
-import model.auth.request.witecreaterequestModel
+
 import model.auth.request.writeputModel
 
 data class witeputequest(
@@ -10,10 +10,11 @@ data class witeputequest(
     @Json(name = "postId") val postId: Long
 )
 
-fun writeputModel.toDto() =witeputequest(
+fun writeputModel.toDto() = witeputequest(
     title = title,
     content = content,
     postId = postId
+
 )
 
 fun witeputequest.toModel() = writeputModel(

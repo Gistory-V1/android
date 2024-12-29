@@ -9,13 +9,13 @@ import javax.inject.Inject
 class likedatasourceImpl @Inject constructor(
     private val likeService: likeApi
 ): likedatasource {
-    override suspend fun createsub(sessionId: String, body: likebodyResponse): Flow<Unit> =
-        performApiRequest { likeService.createsub(sessionId = sessionId, body = body) }
+    override suspend fun createsub( body: likebodyResponse): Flow<Unit> =
+        performApiRequest { likeService.createsub( body = body) }
 
 
 
-    override suspend fun deletesub(sessionId: String, body: likebodyResponse): Flow<Unit> =
-        performApiRequest { likeService.deleteesub(sessionId = sessionId, body = body)}
+    override suspend fun deletesub( body: likebodyResponse): Flow<Unit> =
+        performApiRequest { likeService.deleteesub( body = body)}
 }
 
 

@@ -14,48 +14,61 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kim.presentation.R
 import com.kim.presentation.component.modifier.clickablesingle
+import component.modifier.HomeICON
+import component.modifier.addICON
+import component.modifier.myICON
+import component.modifier.type
 
 @Composable
 fun NavigationBar(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit // onClick 파라미터 추가
+    currentDestination: type,
+    setCurrenDestination: (type) -> Unit,
 ) {
-    Row(
-        modifier = modifier
+    type.values().forEach { item ->
+        Row(
+            modifier = modifier
             .fillMaxWidth()
             .height(60.dp)
-            .background(color = Color.White),
+            .background(color = Color.White)
+            .then(
+                if (currentDestination == item) {
+                    Modifier
+                } else {
+                    Modifier.clickablesingle ( onClick ={setCurrenDestination(item)} )
+                }
+            ),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { onClick() }) { // 클릭 이벤트 추가
-            Icon(
-                painter = painterResource(id = R.drawable.img_24),
-                contentDescription = "Home Icon",
-                tint = Color(0xFF6A00FF)
-            )
+            when (item){
+                type.HOME -> {
+                    HomeICON(
+                        modifier = Modifier,
+                        isSelected = currentDestination == item
+
+                    )
+
+                }
+
+                type.ADD -> {
+                   addICON(
+                       modifier = Modifier,
+                       isSelected = currentDestination == item
+                   )
+
+                }
+
+                type.MY -> {
+                    myICON(
+                        modifier = Modifier,
+                        isSelected = currentDestination == item
+                    )
+                }
+            }
         }
-        IconButton(onClick = { onClick() }) {
-            Icon(
-                painter = painterResource(id = R.drawable.img_25),
-                contentDescription = "Add Icon",
-                tint = Color.Black
-            )
-        }
-        IconButton(onClick = { onClick() }) {
-            Icon(
-                painter = painterResource(id = R.drawable.img_26),
-                contentDescription = "Bell Icon",
-                tint = Color.Black
-            )
-        }
-        IconButton(onClick = { onClick() }) {
-            Icon(
-                painter = painterResource(id = R.drawable.img_27),
-                contentDescription = "Settings Icon",
-                tint = Color.Black
-            )
-        }
+
+
     }
 }
 
@@ -64,6 +77,7 @@ fun NavigationBar(
 @Composable
 fun NavigationBarPreview() {
     NavigationBar(
-        onClick = {}
+        currentDestination = type.ADD,
+        setCurrenDestination = {}
     )
 }

@@ -11,15 +11,13 @@ class LikerepositoryImpl @Inject constructor(
     private val likeDataSource: likedatasource
 ): LikeRepository {
 
-    override suspend fun createlike(sessionId: String, body: likebodyModel): Flow<Unit> =
+    override suspend fun createlike( body: likebodyModel): Flow<Unit> =
         likeDataSource.createsub(
-            sessionId = sessionId,
             body = body.toDto()
         )
 
-    override suspend fun deletelike(sessionId: String, body: likebodyModel): Flow<Unit> =
+    override suspend fun deletelike( body: likebodyModel): Flow<Unit> =
         likeDataSource.deletesub(
-            sessionId = sessionId,
             body = body.toDto()
         )
 

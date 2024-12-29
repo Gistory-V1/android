@@ -12,7 +12,7 @@ fun NavController.navigationToBookAddBook() {
     this.navigate(BookAddBookRoute)
 }
 
-fun NavGraphBuilder.bookAddBook(navigateToBack: () -> Unit) {
+fun NavGraphBuilder.wrtiePost(navigateToBack: () -> Unit) {
     composable(BookAddBookRoute) {
         BookAddBookRoute(navigateToBack = navigateToBack)
     }

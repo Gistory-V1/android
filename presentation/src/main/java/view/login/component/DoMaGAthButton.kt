@@ -23,7 +23,8 @@ import com.kim.presentation.component.modifier.clickablesingle
 @Composable
 fun DoMaGAthButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
+    onClick: () -> Unit
+    ,
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),

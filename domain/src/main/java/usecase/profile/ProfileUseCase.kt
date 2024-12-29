@@ -8,9 +8,6 @@ import javax.inject.Inject
 class ProfileUseCase @Inject constructor(
     private val profileRepository: ProfileRepository
 ) {
-    operator suspend fun  invoke(sessionId: String): Flow<prfilereponseModel> =
-        profileRepository.profile(
-            sessionId = sessionId,
-
-        )
+    operator suspend fun  invoke(name: String): Flow<prfilereponseModel> =
+        profileRepository.profile(name = name)
 }

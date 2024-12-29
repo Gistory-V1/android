@@ -16,17 +16,15 @@ import retrofit2.http.PUT
 interface wireApi {
     @POST("api/post/create") // 엔드포인트 설정
     suspend fun createPost(
-        @Header("sessionId") sessionId: String, // 동적 헤더
+
         @Body body: witecreaterequest         // 요청 바디
     )
     @GET("api/post")
     suspend fun getPosts(
-        @Header("sessionId") sessionId: String,
-        @Header("postId") postId: Int
+
     ): List<PostResponse>
     @PUT("api/post/update")
     suspend fun updatePost(
-        @Header("sessionId") sessionId: String,
         @Body body: witeputequest
     )
 

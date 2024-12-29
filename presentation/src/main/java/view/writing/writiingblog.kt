@@ -37,49 +37,60 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.navigation.NavigationBar
 import com.kim.presentation.R
+import view.mainpage.MainPage
 import view.myblog.popup.DeleteSearchHistoryDialogs
 import view.post.viewmodel.writeviewmodel
+
 @Composable
 internal fun BookAddBookRoute(
     modifier: Modifier = Modifier,
-    witeviewmodel: writeviewmodel = hiltViewModel(),
     navigateToBack: () -> Unit,
-) {
-    val titleTextState by witeviewmodel.titleTextState.collectAsStateWithLifecycle()
-    val writeTextState by witeviewmodel.writeTextState.collectAsStateWithLifecycle()
+    bookAddBookViewModel: writeviewmodel = hiltViewModel()
+){
 
-    val titleTextStateIsEmpty by witeviewmodel.titleTextStateIsEmpty.collectAsStateWithLifecycle()
-    val writeTextStateIsEmpty by witeviewmodel.writeTextStateIsEmpty.collectAsStateWithLifecycle()
+    val titleTextState by bookAddBookViewModel.titleTextState.collectAsStateWithLifecycle()
+    val writeTextState by bookAddBookViewModel.writeTextState.collectAsStateWithLifecycle()
+    val postUistate by bookAddBookViewModel.postUistate.collectAsStateWithLifecycle()
 
+    val titleTextStateIsEmpty by bookAddBookViewModel.titleTextStateIsEmpty.collectAsStateWithLifecycle()
+    val writeTextStateIsEmpty by bookAddBookViewModel.writeTextStateIsEmpty.collectAsStateWithLifecycle()
     val (checkBookDialogState, toggleCheckBookDialogState) = remember { mutableStateOf(false) }
 
     WritingBlogScreenWithoutBorders(
-        modifier = modifier,
         titleTextState = titleTextState,
-        writeTextState = writeTextState,
-        checkBookDialogState = checkBookDialogState,
-        updateTitleTextState = witeviewmodel::onTitleChanged,
-        updateWriteTextState = witeviewmodel::onWriteChanged,
-        toggleCheckBookDialogState = { toggleCheckBookDialogState(!checkBookDialogState) },
-        checkButtonOnClick = {
-            if (witeviewmodel.validateAndSetErrorStates()) {
-                witeviewmodel.checkButtonOnClick(
-                    titleTextState,
-                    writeTextState,
-                )
-                witeviewmodel.resetTextState()
-                navigateToBack()
-            }
-        },
+        writeTextState = writeTextState
+        ,
+        titleTextStateIsEmpty = titleTextStateIsEmpty,
+        writeTextStateIsEmpty = writeTextStateIsEmpty,
+        checkBookDialogState =checkBookDialogState ,
+        updateTitleTextState = bookAddBookViewModel::onTitleChanged,
+        updateWriteTextState = bookAddBookViewModel::onWriteChanged,
+        toggleCheckBookDialogState =  { toggleCheckBookDialogState(!checkBookDialogState) },
         navigateToBack = navigateToBack,
-    )
+        checkButtonOnClick = {
+
+            if (bookAddBookViewModel.validateAndSetErrorStates())
+                bookAddBookViewModel.checkButtonOnClick(
+                    titleTextState,
+                    writeTextState
+            )
+            bookAddBookViewModel.resetTextState()
+            navigateToBack()
+
+        },
+
+        )
+
 }
+
 @Composable
 fun WritingBlogScreenWithoutBorders(
     modifier: Modifier = Modifier,
     focusManager: FocusManager = LocalFocusManager.current,
     titleTextState: String,
     writeTextState: String,
+    titleTextStateIsEmpty: Boolean,
+    writeTextStateIsEmpty: Boolean,
     checkBookDialogState: Boolean,
     updateTitleTextState: (String) -> Unit,
     updateWriteTextState: (String) -> Unit,
@@ -91,115 +102,119 @@ fun WritingBlogScreenWithoutBorders(
         modifier = modifier
             .fillMaxWidth()
             .background(color = Color(0xFFFFFFFF))
-            .padding(16.dp) // 전체 여백
+            .padding(16.dp), // 전체 여백
+        verticalArrangement = Arrangement.SpaceBetween // 상단과 하단에 요소를 분리
     ) {
-        // 상단 툴바
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.img_28),
-                contentDescription = "뒤로가기 아이콘",
-                modifier = Modifier
-                    .size(24.dp)
-                    .clickable { navigateToBack() },
-                contentScale = ContentScale.Fit
-            )
+            // 상단 툴바
             Row(
                 modifier = Modifier
-                    .width(90.dp)
-                    .height(40.dp)
-                    .border(
-                        width = 0.5.dp,
-                        color = Color(0xFF868686),
-                        shape = RoundedCornerShape(size = 20.dp)
-                    )
-                    .clickable { checkButtonOnClick() }
-                    .padding(end = 10.dp),
-                horizontalArrangement = Arrangement.Center,
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = "완료",
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF000000)
-                    )
+                Image(
+                    painter = painterResource(id = R.drawable.img_28),
+                    contentDescription = "뒤로가기 아이콘",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clickable { navigateToBack() },
+                    contentScale = ContentScale.Fit
                 )
-            }
-        }
-        if (checkBookDialogState) {
-            Dialog(onDismissRequest = toggleCheckBookDialogState) {
-                DeleteSearchHistoryDialogs(
-                    onDismiss = toggleCheckBookDialogState,
-                    onConfirm = checkButtonOnClick
-                )
-            }
-        }
-
-        // 제목 입력 필드
-        BasicTextField(
-
-            value = titleTextState,
-            onValueChange = updateTitleTextState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp),
-            textStyle = TextStyle(
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
-            ),
-            decorationBox = { innerTextField ->
-                Column {
-                    Text(
-                        text = "제목",
-                        style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Gray
+                Row(
+                    modifier = Modifier
+                        .width(90.dp)
+                        .height(40.dp)
+                        .border(
+                            width = 0.5.dp,
+                            color = Color(0xFF868686),
+                            shape = RoundedCornerShape(size = 20.dp)
                         )
-                    )
-                    innerTextField()
-                }
-            }
-        )
-
-        // 내용 입력 필드
-        BasicTextField(
-            value = writeTextState,
-            onValueChange = updateWriteTextState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp),
-            textStyle = TextStyle(
-                fontSize = 16.sp,
-                color = Color.Black
-            ),
-            decorationBox = { innerTextField ->
-                Column {
+                        .clickable { checkButtonOnClick() }
+                        .padding(end = 10.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
-                        text = "내용을 입력해주세요",
+                        text = "완료",
                         style = TextStyle(
                             fontSize = 16.sp,
-                            color = Color.Gray
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF000000)
                         )
                     )
-                    innerTextField()
                 }
             }
-        )
-    }
+            if (checkBookDialogState) {
+                Dialog(onDismissRequest = toggleCheckBookDialogState) {
+                    DeleteSearchHistoryDialogs(
+                        onDismiss = toggleCheckBookDialogState,
+                        onConfirm = checkButtonOnClick
+                    )
+                }
+            }
 
-    NavigationBar(
-        onClick = { /* 적절한 동작 */ }
-    )
+            // 제목 입력 필드
+            BasicTextField(
+                value = titleTextState,
+                onValueChange = updateTitleTextState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+                textStyle = TextStyle(
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                ),
+                decorationBox = { innerTextField ->
+                    Column {
+                        Text(
+                            text = "제목",
+                            style = TextStyle(
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Gray
+                            )
+                        )
+                        innerTextField()
+                    }
+                }
+            )
+
+            // 내용 입력 필드
+            BasicTextField(
+                value = writeTextState,
+                onValueChange = updateWriteTextState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+                textStyle = TextStyle(
+                    fontSize = 16.sp,
+                    color = Color.Black
+                ),
+                decorationBox = { innerTextField ->
+                    Column {
+                        Text(
+                            text = "내용을 입력해주세요",
+                            style = TextStyle(
+                                fontSize = 16.sp,
+                                color = Color.Gray
+                            )
+                        )
+                        innerTextField()
+                    }
+                }
+            )
+        }
+
+    }
 }
+
+
 
 
 
@@ -215,6 +230,8 @@ fun WritingBlogScreenPreview() {
         updateWriteTextState = {},
         checkButtonOnClick = {},
         toggleCheckBookDialogState = {},
-        navigateToBack = {}
+        navigateToBack = {},
+        titleTextStateIsEmpty = false,
+        writeTextStateIsEmpty = false
     )
 }

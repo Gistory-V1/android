@@ -32,7 +32,7 @@ class AuthInterceptor @Inject constructor(
                 request
             }
             path.endsWith("/auth") && method in listOf(PATCH)-> {
-                request.newBuilder().addHeader("Authorization", "Bearer $refreshToken").build()
+                request.newBuilder().addHeader("Authorization", "$refreshToken").build()
             }
             else -> {
                 request.newBuilder().addHeader("Authorization","Bearer $accessToken" ).build()

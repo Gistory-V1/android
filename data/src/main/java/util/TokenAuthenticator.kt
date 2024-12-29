@@ -34,7 +34,9 @@ class TokenAuthenticator @Inject constructor(
                 .build()
 
             val authApi = retrofit.create(AuthApi::class.java)
-            val response = runBlocking { authApi.gAuthAccess() }
+            val response = runBlocking { authApi.gAuthAccess(
+                refreshToken = refreshToken
+            ) }
             runBlocking {
                 with(localDataSource){
                     setAccessToken(response.accessToken)

@@ -1,8 +1,6 @@
 package remote.api.auth
 
 import likebodyResponse
-import remote.dto.auth.request.PostsubResponse
-import remote.dto.auth.request.ProfileResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -11,13 +9,11 @@ import retrofit2.http.POST
 
 interface likeApi{
     @POST("api/like") // 엔드포인트 설정
-    suspend fun createsub(
-        @Header("sessionId") sessionId: String, // 동적 헤더
+    suspend fun createsub( // 동적 헤더
         @Body body: likebodyResponse      // 요청 바디
     )
     @DELETE("api/like")
-    suspend fun deleteesub(
-        @Header("sessionId") sessionId: String, // 동적 헤더
+    suspend fun deleteesub( // 동적 헤더
         @Body body: likebodyResponse      // 요청 바디
     )
 

@@ -8,9 +8,8 @@ import javax.inject.Inject
 class deletelikeUseCase @Inject constructor(
     private val likeRepository: LikeRepository
 ) {
-    suspend operator fun invoke(body: likebodyModel, sessionId: String): Flow<Unit> =
+    suspend operator fun invoke(body: likebodyModel): Flow<Unit> =
         likeRepository.deletelike(
-            sessionId = sessionId,
             body = body
         )
 }

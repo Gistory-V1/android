@@ -12,12 +12,12 @@ class SubrepositoryImpl @Inject constructor(
 
 ): subRepository{
 
-    override suspend fun createlike(sessionId: String, body: subrequestModel): Flow<Unit> = subrDataSource.createlike(
-        sessionId = sessionId,
+    override suspend fun createlike( body: subrequestModel): Flow<Unit> = subrDataSource.createlike(
+
         body = body.toDto()
     )
-    override suspend fun deletelike(sessionId: String, body: subrequestModel): Flow<Unit> = subrDataSource.deltelike(
-        sessionId = sessionId,
+    override suspend fun deletelike( body: subrequestModel): Flow<Unit> = subrDataSource.deltelike(
+
         body = body.toDto()
     )
 

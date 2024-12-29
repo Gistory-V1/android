@@ -5,5 +5,5 @@ import model.auth.request.subrequestModel
 import model.auth.response.prfilereponseModel
 
 interface ProfileRepository {
-      suspend fun profile(sessionId: String): Flow<prfilereponseModel>
+      suspend fun profile(name: String): Flow<prfilereponseModel>
 }

@@ -19,15 +19,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kim.presentation.R
+import model.auth.response.PostresponseModel
+import model.auth.response.top5responsemodel
 
 @Composable
 fun MainItem(
     modifier: Modifier = Modifier,
-    index: Int,
-    title: String,
-    likes: Int,
-    views: Int,
-    daysAgo: String
+    data: top5responsemodel
 ) {
     Column(
         modifier = Modifier
@@ -41,7 +39,7 @@ fun MainItem(
             verticalAlignment = Alignment.Top
         ) {
             Text(
-                text = "$index / 김민준",
+                text = "${data.rank}/ ${data.name}",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight(400),
@@ -52,7 +50,7 @@ fun MainItem(
         }
         Column(modifier = modifier.fillMaxWidth()) {
             Text(
-                text = title,
+                text = data.title,
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight(600),
@@ -74,7 +72,7 @@ fun MainItem(
                 )
                 // 숫자 텍스트
                 Text(
-                    text = "$likes",
+                    text = "${data.likeCount}",
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.W400,
@@ -83,7 +81,7 @@ fun MainItem(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "$views 조회",
+                    text = "${data.views}",
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.W400,
@@ -92,7 +90,7 @@ fun MainItem(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = daysAgo,
+                    text = "${data.createdAt}",
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.W300,
@@ -191,11 +189,15 @@ fun MainItems(
 @Composable
 fun MainItemPreview() {
     MainItem(
-        index = 1,
-        title = "내가 피부가 까만 이유는?",
-        likes = 100,
-        views = 36,
-        daysAgo = "2일 전"
+        data = top5responsemodel(
+            rank = 1,
+            name = "김승찬",
+            title = "내가 피부가 까만 이유는?",
+            likeCount = 100,
+            views = 36,
+            createdAt = "2일 전",
+
+        )
     )
     MainItems()
 

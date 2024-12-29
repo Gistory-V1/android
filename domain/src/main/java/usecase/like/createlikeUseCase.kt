@@ -8,9 +8,9 @@ import javax.inject.Inject
 class createlikeUseCase @Inject constructor(
     private val likeRepository: LikeRepository
 ){
-    suspend operator fun invoke(body: likebodyModel,sessionId: String): Flow<Unit> =
+    suspend operator fun invoke(body: likebodyModel): Flow<Unit> =
         likeRepository.createlike(
-            sessionId = sessionId,
+
             body = body
         )
 
