@@ -41,7 +41,7 @@ import view.myblog.popup.DeleteSearchHistoryDialogs
 import view.post.viewmodel.writeviewmodel
 
 @Composable
-internal fun BookAddBookRoute(
+internal fun AddBookRoute(
     modifier: Modifier = Modifier,
     navigateToBack: () -> Unit,
     bookAddBookViewModel: writeviewmodel = hiltViewModel()

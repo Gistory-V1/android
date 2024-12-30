@@ -3,17 +3,18 @@ package view.writing.navgiton
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import view.writing.BookAddBookRoute
+import view.writing.AddBookRoute
 
 
-const val BookAddBookRoute = "book_add_book_route"
+
+const val AddBookRoute = "add_book_route"
 
 fun NavController.navigationToBookAddBook() {
-    this.navigate(BookAddBookRoute)
+    this.navigate(AddBookRoute)
 }
 
 fun NavGraphBuilder.wrtiePost(navigateToBack: () -> Unit) {
-    composable(BookAddBookRoute) {
-        BookAddBookRoute(navigateToBack = navigateToBack)
+    composable(AddBookRoute) {
+        AddBookRoute(navigateToBack = navigateToBack)
     }
 }

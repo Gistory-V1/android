@@ -19,8 +19,8 @@ import kotlinx.coroutines.CoroutineScope
 import view.mainpage.MainRoute
 import view.myblog.SettingRoute
 import view.myblog.viewModel.otherProfileViewModel
-import view.writing.BookAddBookRoute
-import view.writing.navgiton.BookAddBookRoute
+import view.writing.AddBookRoute
+
 
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -51,7 +51,7 @@ fun CombinationView(
                         MainRoute(MyprofileClick = MainButton)
 
 
-                type.ADD -> BookAddBookRoute(navigateToBack = AddButton)
+                type.ADD -> AddBookRoute(navigateToBack = AddButton)
                 type.MY -> SettingRoute(onBackClick = MyButton)
 
             }
