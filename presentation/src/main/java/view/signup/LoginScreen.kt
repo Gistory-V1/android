@@ -52,7 +52,7 @@ import view.signup.viewmodel.Loginviewmodel
 internal fun InputLoginRoute(
     onBackClick: () -> Unit,
     onMainClick: () -> Unit,
-    onRePasswordClick: () -> Unit,
+    navigateToMain: () -> Unit,
     viewModel: Loginviewmodel = hiltViewModel()
 ){
     val loginUiState by viewModel.loginUiState.collectAsStateWithLifecycle()
@@ -65,11 +65,12 @@ internal fun InputLoginRoute(
         isError1 = false,
         isError2 = false,
         onBackClick = onBackClick,
-        onMainClick = onMainClick,
         loginUiState = loginUiState,
         saveTokenUiState = saveTokenUiState,
         onPasswordChange = viewModel::onPasswordChange,
-        loginCallBack = {
+        passward = password,
+        navigateToMain = navigateToMain,
+        onMainClick= {
             viewModel.login(
                 body = GAuthLoginRequestBodyModel(
                     "${viewModel.email.value}${ResourceKeys.EMAIL_DOMAIN}",
@@ -88,6 +89,8 @@ internal fun InputLoginRoute(
 fun LoginScreen(
     modifier: Modifier = Modifier,
     email: String,
+    navigateToMain: () -> Unit,
+    passward: String,
     onEmailChange: (String) -> Unit,
     loginUiState: LoginUiState,
     isError1: Boolean,
@@ -95,7 +98,6 @@ fun LoginScreen(
     saveTokenUiState: SaveTokenUiState,
     onBackClick: () -> Unit,
     onMainClick: () -> Unit,
-    loginCallBack: () -> Unit,
     onPasswordChange: (String) -> Unit,
 
     ) {
@@ -114,10 +116,10 @@ fun LoginScreen(
     DisposableEffect(loginUiState, saveTokenUiState) {
         when (loginUiState) {
             is LoginUiState.Loading -> Unit
-            is LoginUiState.Success -> {
+            is LoginUiState.Success ->  {
                 when (saveTokenUiState) {
                     is SaveTokenUiState.Loading -> Unit
-                    is SaveTokenUiState.Success -> onMainClick()
+                    is SaveTokenUiState.Success -> navigateToMain()
                     is SaveTokenUiState.Error -> {
                         isLoading = false
                         isError = true
@@ -221,7 +223,7 @@ fun LoginScreen(
                 Text(
                     modifier = Modifier.padding(start = 18.dp),
 
-                    text = "비밀번호",
+                    text = "",
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight(400),
@@ -238,7 +240,7 @@ fun LoginScreen(
                     isDescription = false,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     placeHolder = stringResource(id = R.string.check_password),
-                    setText = email,
+                    setText = passward,
                     singleLine = true,
                     onValueChange = onPasswordChange,
                     isError2 = isError,
@@ -248,7 +250,7 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(230.dp))
 
             DoMaGAthButton{
-                loginCallBack()
+                onMainClick()
                 isLoading = true
             }
             if (isLoading){
@@ -272,8 +274,9 @@ fun PreviewLoginScreen() {
         onMainClick = {},
         loginUiState = LoginUiState.Loading,
         saveTokenUiState = SaveTokenUiState.Loading,
-        loginCallBack = {},
-        onPasswordChange = {}
+        onPasswordChange = {},
+        passward = "",
+        navigateToMain = {}
 
 
 

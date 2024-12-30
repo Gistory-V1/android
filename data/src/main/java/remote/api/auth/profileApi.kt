@@ -8,7 +8,7 @@ import retrofit2.http.Header
 interface profileApi {
 
 
-    @GET("api/profile")
+    @GET("profile")
     suspend fun getprofile(
         @Header("name") name: String,
     ): profileresponse

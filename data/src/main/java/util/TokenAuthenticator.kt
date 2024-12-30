@@ -29,7 +29,7 @@ class TokenAuthenticator @Inject constructor(
     private fun refreshAccessToken(refreshToken: String): String? {
         return try {
             val retrofit = Retrofit.Builder()
-                .baseUrl("exple")
+                .baseUrl("https://port-0-gistory-server-v1-m47qofx19aae55ab.sel4.cloudtype.app/")
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
 

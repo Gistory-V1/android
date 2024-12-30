@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.navigation.NavigationBar
 import com.kim.presentation.R
 import view.mainpage.MainPage
 import view.myblog.popup.DeleteSearchHistoryDialogs

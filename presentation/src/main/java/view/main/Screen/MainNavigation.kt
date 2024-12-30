@@ -8,7 +8,7 @@ import view.mainpage.MainRoute
 
 
 const val mainRoute = "main_route"
-const val outingStatusRoute = "outing_status_route"
+
 
 fun NavController.navigateToMain(navOptions: NavOptions? = null) {
     this.navigate(mainRoute, navOptions)

@@ -18,14 +18,15 @@ fun NavController.navigateToInputLogin(navOptions: NavOptions? = null) {
 fun NavGraphBuilder.loginScreen(
     onBackClick: () -> Unit,
     onMainClick: () -> Unit,
-    onRePasswordClick: () -> Unit,
+    navigateToMain: ()->Unit,
 
 ){
     composable(route = InputLoginRoute) {
         InputLoginRoute(
             onBackClick = onBackClick,
             onMainClick = onMainClick,
-            onRePasswordClick = onRePasswordClick,
+            navigateToMain = navigateToMain
+
 
         )
     }

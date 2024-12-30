@@ -1,6 +1,7 @@
 package com.kim.Dormitorymanager.module
 
 import android.util.Log
+import com.kim.Dormitorymanager.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

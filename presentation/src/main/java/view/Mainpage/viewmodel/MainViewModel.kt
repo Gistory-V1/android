@@ -1,9 +1,8 @@
-package view.Mainpage.viewmodel
+package view.mainpage.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,8 +16,7 @@ import view.main.UiState.MainUiState
 import javax.inject.Inject
 
 @HiltViewModel
-class MainviewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+class MainViewModel @Inject constructor(
     private val  rankUseCase: RankUseCase,
 ): ViewModel() {
     private val _swipeRefreshLoading = MutableStateFlow(false)

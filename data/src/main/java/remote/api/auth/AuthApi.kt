@@ -21,6 +21,6 @@ interface AuthApi {
         @Header("refreshToken") refreshToken: String
     ): GAuthLoginResponse
 
-    @DELETE("/logout")
+    @DELETE("auth/logout")
     suspend fun gAuthLogout()
 }

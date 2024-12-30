@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,6 +21,8 @@ import utill.isValidPassword
 import view.login.SignUpUiState.SignUpUiState
 import javax.inject.Inject
 
+
+@HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val signUpUseCase: SignUpUseCase,
     private val savedStateHandle: SavedStateHandle,
@@ -61,9 +64,7 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    internal fun initSignUP() {
-        _signUpState.value= SignUpUiState.Loading
-    }
+
     internal fun onEmailChange(value: String) {
         savedStateHandle[EMAIL] = value
     }

@@ -11,7 +11,7 @@ import javax.inject.Inject
 class AuthInterceptor @Inject constructor(
     private val dataSource: LocalDataSource
 ) : Interceptor {
-    private val ignore by lazy {"/auth"}
+    private val ignore by lazy {""}
 
     private companion object {
         const val POST = "POST"
@@ -31,8 +31,8 @@ class AuthInterceptor @Inject constructor(
             ignore.any { path.contains(it) && method in listOf(POST, GET, DELETE)} -> {
                 request
             }
-            path.endsWith("/auth") && method in listOf(PATCH)-> {
-                request.newBuilder().addHeader("Authorization", "$refreshToken").build()
+            path.endsWith("/reissue") && method in listOf(PATCH)-> {
+                request.newBuilder().addHeader("refreshToken", "$refreshToken").build()
             }
             else -> {
                 request.newBuilder().addHeader("Authorization","Bearer $accessToken" ).build()

@@ -7,11 +7,11 @@ import retrofit2.http.DELETE
 import retrofit2.http.Header
 import retrofit2.http.POST
 interface subApi{
-    @POST("api/sub") // 엔드포인트 설정
+    @POST("subs") // 엔드포인트 설정
     suspend fun createlike (
     @Body body: PostsubResponse      // 요청 바디
 )
-     @DELETE("api/sub")
+     @DELETE("subs")
      suspend fun deletelike(
          @Body body: PostsubResponse
 )

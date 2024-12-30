@@ -33,7 +33,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.navigation.NavigationBar
 import com.kim.presentation.R
 import view.main.component.MainItem
 
@@ -145,27 +144,7 @@ fun MyBlogs(
             }
 
         }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                // 리스트가 남은 공간을 모두 차지하도록 설정
-                .padding(horizontal = 20.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            itemsIndexed(dummyList) { index, item ->
-                MainItem(
-                    index = index + 1,
-                    title = item,
-                    likes = 100,
-                    views = 36,
-                    daysAgo = "2일 전"
-                )
-            }
-        }
-        NavigationBar(
-            onClick = onCick
 
-        )
     }
 
 }

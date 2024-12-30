@@ -18,15 +18,14 @@ fun NavController.navigateToSettingScreen(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.MyBlogs(
     onBackClick:() -> Unit
-){
+) {
 
-    composable(route = settingRoute){
+    composable(route = settingRoute) {
         SettingRoute(
             onBackClick = onBackClick,
 
 
-        )
+            )
 
     }
-
 }

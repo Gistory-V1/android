@@ -20,63 +20,72 @@ import component.modifier.myICON
 import component.modifier.type
 
 @Composable
-fun NavigationBar(
+fun Navigation(
     modifier: Modifier = Modifier,
     currentDestination: type,
     setCurrenDestination: (type) -> Unit,
 ) {
-    type.values().forEach { item ->
-        Row(
-            modifier = modifier
+    Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
             .fillMaxWidth()
             .height(60.dp)
             .background(color = Color.White)
-            .then(
-                if (currentDestination == item) {
-                    Modifier
-                } else {
-                    Modifier.clickablesingle ( onClick ={setCurrenDestination(item)} )
-                }
-            ),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
     ) {
-            when (item){
+        type.values().forEach { item ->
+            when (item) {
                 type.HOME -> {
                     HomeICON(
-                        modifier = Modifier,
+                        modifier = Modifier.then(
+                            if (currentDestination != item) {
+                                Modifier.clickablesingle(onClick = { setCurrenDestination(item) })
+                            } else {
+                                Modifier
+                            }
+                        ),
                         isSelected = currentDestination == item
-
                     )
-
                 }
 
                 type.ADD -> {
-                   addICON(
-                       modifier = Modifier,
-                       isSelected = currentDestination == item
-                   )
-
+                    addICON(
+                        modifier = Modifier.then(
+                            if (currentDestination != item) {
+                                Modifier.clickablesingle(onClick = { setCurrenDestination(item) })
+                            } else {
+                                Modifier
+                            }
+                        ),
+                        isSelected = currentDestination == item
+                    )
                 }
 
                 type.MY -> {
                     myICON(
-                        modifier = Modifier,
+                        modifier = Modifier.then(
+                            if (currentDestination != item) {
+                                Modifier.clickablesingle(onClick = { setCurrenDestination(item) })
+                            } else {
+                                Modifier
+                            }
+                        ),
                         isSelected = currentDestination == item
                     )
                 }
             }
         }
-
-
     }
 }
+
+
+
 
 
 @Preview
 @Composable
 fun NavigationBarPreview() {
-    NavigationBar(
+    Navigation(
         currentDestination = type.ADD,
         setCurrenDestination = {}
     )

@@ -8,11 +8,11 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface likeApi{
-    @POST("api/like") // 엔드포인트 설정
+    @POST("like") // 엔드포인트 설정
     suspend fun createsub( // 동적 헤더
         @Body body: likebodyResponse      // 요청 바디
     )
-    @DELETE("api/like")
+    @DELETE("like")
     suspend fun deleteesub( // 동적 헤더
         @Body body: likebodyResponse      // 요청 바디
     )

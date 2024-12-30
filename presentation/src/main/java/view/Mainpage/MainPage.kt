@@ -33,22 +33,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.navigation.NavigationBar
+
 import com.kim.presentation.R
 import com.kim.presentation.component.modifier.clickablesingle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
-import view.Mainpage.viewmodel.MainviewModel
+import model.auth.response.top5responsemodel
 import view.main.UiState.MainUiState
 import view.main.component.MainItem
+import view.mainpage.viewmodel.MainViewModel
 
 @Composable
 internal fun MainRoute(
     modifier: Modifier = Modifier,
     MyprofileClick: () -> Unit,
-    MainViewModel: MainviewModel = hiltViewModel(LocalContext.current as ComponentActivity),
+    MainViewModel: MainViewModel = hiltViewModel(LocalContext.current as ComponentActivity),
 
-) {
+    ) {
     val getRankList by MainViewModel.rankList.collectAsStateWithLifecycle()
     val (isToastVisible, setIsToastVisible) = remember { mutableStateOf(false) }
 
@@ -140,33 +141,39 @@ fun MainPage(
                 .height(300.dp)
                 .padding(horizontal = 20.dp, vertical = 12.dp),
 
-            painter = painterResource(id = R.drawable.img_12),
+            painter = painterResource(id = R.drawable.img_34),
             contentScale = ContentScale.Fit,
             contentDescription = "G 아이콘 이미지")
 
         when(rankList) {
             is MainUiState.Empty -> {
+                MyprofileClick()
+
                 showToast()
                 Text(text = "안됨")
             }
 
             is MainUiState.Fail -> {
                 showToast()
+                MyprofileClick()
                 Text(text = "안됨")
             }
 
             is MainUiState.Loading -> {
                 showToast()
+                MyprofileClick()
                 Text(text = "로딩중~~")
             }
 
             is MainUiState.Success -> {
+                MyprofileClick()
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f) // 리스트가 남은 공간을 모두 차지하도록 설정
                         .padding(horizontal = 20.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
+
                 ) {
                     items(rankList.data) { item ->
                         MainItem(

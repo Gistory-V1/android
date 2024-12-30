@@ -26,22 +26,22 @@ abstract class RemoteDataSourceModule {
 
 
     @Binds
-    abstract fun pprr(
+    abstract fun pprrs(
         likedatasourceImpl: likedatasourceImpl
     ): likedatasource
 
     @Binds
-    abstract fun prrr(
+    abstract fun prrrd(
         prfileDataSourceImpl: prfileDataSourceImpl
     ): prifileDataSource
 
     @Binds
-    abstract fun orrr(
+    abstract fun orrrd(
         rankDataSourceImpl: rankdatasourceImpl
     ): rankdatasource
 
     @Binds
-    abstract fun orrr(
+    abstract fun orrrs(
         subdatasourceImpl: subdatasourceImpl
     ): subdatasourceImpl
 

@@ -39,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.navigation.NavigationBar
 import com.kim.presentation.R
 import model.auth.response.prfilereponseModel
 import usecase.profile.ProfileUseCase
@@ -57,7 +56,6 @@ internal fun SettingRoute(
     val profileUiState by viewModel.profileState.collectAsStateWithLifecycle()
 
     MyBlogs(
-
         getOtherProfile = viewModel::getOtherProfile,
         onBackClick = onBackClick,
         profileUiState = profileUiState,
@@ -74,18 +72,22 @@ fun MyBlogs(
 ) {
     when (profileUiState) {
         is ProfileUiState.Empty -> {
+
             Text(text = "오류")
         }
 
         is ProfileUiState.Loading -> {
+
             Text(text = "로딩")
         }
 
         is ProfileUiState.Fail -> {
+
             Text(text = "오류")
         }
 
         is ProfileUiState.Success -> {
+
             name(
                 data = profileUiState.data,
                 modifier = modifier,

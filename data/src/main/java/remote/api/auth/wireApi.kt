@@ -14,16 +14,16 @@ import retrofit2.http.PUT
 
 // Retrofit API 인터페이스
 interface wireApi {
-    @POST("api/post/create") // 엔드포인트 설정
+    @POST("post/create") // 엔드포인트 설정
     suspend fun createPost(
 
         @Body body: witecreaterequest         // 요청 바디
     )
-    @GET("api/post")
+    @GET("post")
     suspend fun getPosts(
 
     ): List<PostResponse>
-    @PUT("api/post/update")
+    @PUT("post/update")
     suspend fun updatePost(
         @Body body: witeputequest
     )

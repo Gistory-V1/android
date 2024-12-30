@@ -76,9 +76,7 @@ internal fun SiginUpRoute(
                 )
             )
         },
-        initCallBack = {
-            viewModel.initSignUP()
-        }
+
     )
 }
 
@@ -97,7 +95,7 @@ fun SignUPScreen(
     onBackClick: () -> Unit,
     onNumberClick: () -> Unit,
     signUpCallBack: () -> Unit,
-    initCallBack: () -> Unit
+
 ) {
     val focusManager = LocalFocusManager.current
     val isKeyboardOpen by keyboardAsState()
@@ -121,7 +119,7 @@ fun SignUPScreen(
                 isLoading = false
             }
         }
-        onDispose { initCallBack() }
+        onDispose {  }
     }
 
     lockScreenOrientation(orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
@@ -177,7 +175,7 @@ fun SignUPScreen(
             ) {
                 Text(
                     modifier = Modifier.padding(start = 18.dp),
-                    text = "비밀번호",
+                    text = "",
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight(400),
@@ -252,7 +250,7 @@ fun PreviewLoginScreen() {
         onBackClick = {},
         onNumberClick = {},
         signUpCallBack = {},
-        initCallBack = {},
+
         SignUpUiState = SignUpUiState.Loading,
         password = "",
         checkPassword = "",

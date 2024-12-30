@@ -9,8 +9,8 @@ import retrofit2.http.POST
 
 
 interface rankAPi {
-    @GET("rank-like") // 엔드포인트 설정
+    @GET("rank-views") // 엔드포인트 설정
     suspend fun Ranklike(
 
-    ) :List<top5response>
+    ) : List<top5response>
 }

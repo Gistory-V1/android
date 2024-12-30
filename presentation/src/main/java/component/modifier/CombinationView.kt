@@ -14,7 +14,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.navigation.NavigationBar
+import com.example.navigation.Navigation
 import kotlinx.coroutines.CoroutineScope
 import view.mainpage.MainRoute
 import view.myblog.SettingRoute
@@ -35,23 +35,22 @@ fun CombinationView(
     AddButton: () -> Unit,
     MyButton: () -> Unit,
 
-    ){
-
-
-
+    ) {
 
     Scaffold(
         bottomBar = {
-            NavigationBar(
+            Navigation(
                 currentDestination = currentDestination,
                 setCurrenDestination = setCurrentDestination
             )
         }
-    ){
-        paddingValues ->
-        Box(modifier = modifier.padding(paddingValues)){
-            when(currentDestination){
-                type.HOME -> MainRoute(MyprofileClick = MainButton)
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            when (currentDestination) {
+                type.HOME ->
+                        MainRoute(MyprofileClick = MainButton)
+
+
                 type.ADD -> BookAddBookRoute(navigateToBack = AddButton)
                 type.MY -> SettingRoute(onBackClick = MyButton)
 
@@ -59,5 +58,7 @@ fun CombinationView(
         }
 
     }
-
 }
+
+
+
